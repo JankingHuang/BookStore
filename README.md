@@ -24,3 +24,11 @@ The following guides illustrate how to use some features concretely:
 * [Accessing data with MySQL](https://spring.io/guides/gs/accessing-data-mysql/)
 * [Handling Form Submission](https://spring.io/guides/gs/handling-form-submission/)
 
+### 配置&运行
+#### 配置
+* 修改项目`Maven`配置后`IntelliJ Idea`会自动下载`Maven`依赖。
+* `src/main/resources/application-jdbc.yml`配置数据库基本信息(库名、用户名、密码等)。
+* `src/main/resources/application.yml`配置前端网站的访问端口。
+#### 运行
+* `Test`包下可以对数据库进行测试。
+* `BookstoreApplication` 可以运行`SpringBootApplication`。
