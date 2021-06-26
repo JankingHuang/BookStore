@@ -12,6 +12,6 @@ import java.math.BigInteger;
 @Repository
 public interface LoginMapper {
 
-    @Select("select user_id from t_user where user_name = #{name} and password = #{password}")
+//    @Select("select user_id from t_user where user_name = #{name} and password = #{password}")
     BigInteger loginSelect(@Param("name") String name, @Param("password") String password);
 }
