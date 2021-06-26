@@ -23,7 +23,7 @@ public class LonginController {
     public String login(String userName, String password, Model model) {
 
         if (loginService.loginSelect(userName, new MD5().getMD5ofStr(password)) != null) {
-
+            System.out.println("...");
             return "index";
         }
 
