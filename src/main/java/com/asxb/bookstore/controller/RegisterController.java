@@ -3,7 +3,6 @@ package com.asxb.bookstore.controller;
 import com.asxb.bookstore.common.ResultInfo;
 import com.asxb.bookstore.common.impl.ResultInfoFactory;
 import com.asxb.bookstore.service.RegisterService;
-import com.asxb.bookstore.service.impl.RegisterServiceImpl;
 import com.asxb.bookstore.utils.MD5;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;

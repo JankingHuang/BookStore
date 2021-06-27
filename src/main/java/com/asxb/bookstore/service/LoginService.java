@@ -1,8 +1,8 @@
 package com.asxb.bookstore.service;
 
-import java.math.BigInteger;
+import com.asxb.bookstore.pojo.User;
 
 public interface LoginService {
 
-    BigInteger loginSelect(String userName, String password);
+    User loginSelect(String userName, String password);
 }
