@@ -1,5 +1,6 @@
 package com.asxb.bookstore;
 
+import com.asxb.bookstore.mapper.BookMapper;
 import com.asxb.bookstore.mapper.LoginMapper;
 import com.asxb.bookstore.mapper.RegisterMapper;
 import com.asxb.bookstore.utils.MD5;
@@ -18,6 +19,9 @@ public class LoginMapperTest {
 
     @Autowired
     LoginMapper loginMapper;
+
+    @Autowired
+    BookMapper bookMapper;
 
     @Test
     public void loginTest() {
