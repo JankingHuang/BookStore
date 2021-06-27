@@ -25,7 +25,9 @@
                         <input type="text" name="" value="" id="input">
                     </td>
                     <td>
-                        <input type="image" name="imageField" src="images/btn_search.png" style="margin-top: 10px;">
+
+                        <input type="image" name="imageField" src="images/btn_search.png" style="margin-top: 10px;"/>
+
                     </td>
                 </tr>
             </table>
@@ -47,8 +49,14 @@
 
 
         <h3>图书分类</h3>
+        <ul class="classify bgf7e4e4 bdf7e4e4" th:if="categories != null" th:each="category : ${categories}">
 
-        <ul class="classify bgf7e4e4 bdf7e4e4">
+            <li><a href="#" th:text="${category.getCategoryName()}">文艺</a></li>
+
+            <div class="fixed"></div>
+        </ul>
+
+        <ul class="classify bgf7e4e4 bdf7e4e4" th:unless="categories != null">
 
             <li><a href="#">文艺</a></li>
 

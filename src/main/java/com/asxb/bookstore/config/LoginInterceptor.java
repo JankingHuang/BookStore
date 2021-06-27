@@ -1,6 +1,5 @@
 package com.asxb.bookstore.config;
 
-import org.springframework.ui.Model;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
