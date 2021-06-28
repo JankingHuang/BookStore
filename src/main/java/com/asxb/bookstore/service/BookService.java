@@ -24,4 +24,11 @@ public interface BookService {
 
     // 下架书籍
     void bookDown(BigDecimal id);
+
+    // 根据id删除书籍
+    void deleteBookById(BigDecimal id);
+
+    Book findBookById(BigDecimal id);
+
+    void updateBook(Book book);
 }

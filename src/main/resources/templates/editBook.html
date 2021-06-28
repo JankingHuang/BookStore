@@ -39,13 +39,15 @@
             <h2>书籍修改</h2>
         </div>
         <div class="order02 pb10">
-            <form name="bookForm" method="post">
+            <form name="bookForm" th:method="post" th:action="'/editBookAction'">
                 <table width="738" align="center" cellpadding="0" cellspacing="0">
+
+                    <input type="hidden" th:value="${book.getBookId()}" name="bookId">
                     <tr class="bd2">
                         <th width="20%" align="center" class="bd2">书名
                         </td>
                         <td width="80%" align="left" class="bd1 pl9">
-                            <input type="text" name="" value="" id="" class="input w300"><span class="required">*</span>
+                            <input type="text" name="bookName" class="input w300" th:value="${book.getBookName()}"><span class="required">*</span>
                         </td>
                     </tr>
                     <tr class="bd2">
@@ -53,11 +55,11 @@
                         </td>
                         <td width="80%" align="left" class="bd1 pl9">
 
-                            <select name="" id="" style="width:305px;">
-                                <option value="">--请选择--</option>
-                                <option value="1">文艺</option>
-                                <option value="2">小说</option>
-                                <option value="3">青春</option>
+                            <select name="categoryId" id="" style="width:305px;">
+<!--                                <option value="">&#45;&#45;请选择&#45;&#45;</option>-->
+                                <option selected="selected" th:text="${categoryName}" th:value="${book.getCategoryId()}"></option>
+                                <option th:if="categories != null" th:each="category : ${categories}"
+                                        th:text="${category.getCategoryName()}" th:value="${category.getId()}"></option>
                             </select><span class="required">*</span>
                         </td>
                     </tr>
@@ -65,28 +67,32 @@
                         <th width="20%" align="center" class="bd2">作者
                         </td>
                         <td width="80%" align="left" class="bd1 pl9">
-                            <input type="text" name="" value="" id="" class="input w300"><span class="required">*</span>
+                            <input type="text" name="bookAuthor" value="" th:value="${book.getBookAuthor()}" class="input w300"><span
+                                class="required">*</span>
                         </td>
                     </tr>
                     <tr class="bd2">
                         <th width="20%" align="center" class="bd2">价格
                         </td>
                         <td width="80%" align="left" class="bd1 pl9">
-                            <input type="text" name="" value="" id="" class="input w300"><span class="required">*</span>
+                            <input type="text" name="bookPrice" value="" th:value="${book.getBookPrice()}" class="input w300"><span
+                                class="required">*</span>
                         </td>
                     </tr>
                     <tr class="bd2">
                         <th width="20%" align="center" class="bd2">出版社
                         </td>
                         <td width="80%" align="left" class="bd1 pl9">
-                            <input type="text" name="" value="" id="" class="input w300"><span class="required">*</span>
+                            <input type="text" name="publishing" value="" th:value="${book.getPublishing()}" class="input w300"><span
+                                class="required">*</span>
                         </td>
                     </tr>
                     <tr class="bd2">
                         <th width="20%" align="center" class="bd2">简介
                         </td>
                         <td width="80%" align="left" class="bd1 pl9" rowspan="3">
-                            <textarea name="" rows="6" id="" class="w300"></textarea><span class="required">*</span>
+                            <textarea name="bookDesc" rows="6" th:text="${book.getBookDesc()}" class="w300"></textarea><span
+                                class="required">*</span>
                         </td>
                     </tr>
                     <tr class="">

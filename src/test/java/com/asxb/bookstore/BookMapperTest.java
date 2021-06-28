@@ -51,4 +51,17 @@ public class BookMapperTest {
         // success - 下架
         bookMapper.bookDown(new BigDecimal(2));
     }
+
+    @Test
+    public void deleteTest(){
+
+        bookMapper.deleteBookById(new BigDecimal(7));
+    }
+
+    @Test
+    public void findBookByIdTest() {
+
+        System.out.println(bookMapper.findBookById(new BigDecimal(1)));
+    }
+
 }

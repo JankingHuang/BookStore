@@ -77,8 +77,8 @@
                     <td width="25%" class="text" th:text="${book.getPublishing()}">江苏文艺出版社</td>
                     <td width="30%" class="text">
                         <a href="#">图片上传</a>
-                        <a href="#">修改</a>
-                        <a href="#">删除</a>
+                        <a th:href="'editBook?id=' + ${book.getBookId()}">修改</a>
+                        <a th:href="'deleteBookById?id=' + ${book.getBookId()}">删除</a>
                         <a th:href="'bookUp?id=' + ${book.getBookId()}">上架</a>
                     </td>
                 </tr>

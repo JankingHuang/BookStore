@@ -50,4 +50,19 @@ public class BookServiceImpl implements BookService {
     public void bookDown(BigDecimal id) {
         bookMapper.bookDown(id);
     }
+
+    @Override
+    public void deleteBookById(BigDecimal id) {
+        bookMapper.deleteBookById(id);
+    }
+
+    @Override
+    public Book findBookById(BigDecimal id) {
+        return bookMapper.findBookById(id);
+    }
+
+    @Override
+    public void updateBook(Book book) {
+        bookMapper.updateBook(book);
+    }
 }

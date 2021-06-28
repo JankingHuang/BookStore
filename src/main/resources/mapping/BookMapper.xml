@@ -8,18 +8,18 @@
     </resultMap>
 
     <resultMap id="bookMap" type="book">
-        <id column="book_id" property="bookId" jdbcType="BIGINT" />
-        <result column="book_name" property="bookName" jdbcType="VARCHAR" />
-        <result column="book_name_pinyin" property="namePinyin" jdbcType="VARCHAR" />
-        <result column="book_category_id" property="categoryId" jdbcType="BIGINT" />
-        <result column="book_author" property="bookAuthor" jdbcType="VARCHAR" />
-        <result column="book_price" property="bookPrice" jdbcType="FLOAT" />
-        <result column="book_image" property="bookImage" jdbcType="VARCHAR" />
-        <result column="publishing" property="publishing" jdbcType="VARCHAR" />
-        <result column="book_desc" property="bookDesc" jdbcType="VARCHAR" />
-        <result column="book_state" property="bookState" jdbcType="INTEGER" />
-        <result column="deploy_datetime" property="deployDatetime" jdbcType="DATE" />
-        <result column="sales_volume" property="salesVolume" jdbcType="INTEGER" />
+        <id column="book_id" property="bookId" jdbcType="BIGINT"/>
+        <result column="book_name" property="bookName" jdbcType="VARCHAR"/>
+        <result column="book_name_pinyin" property="namePinyin" jdbcType="VARCHAR"/>
+        <result column="book_category_id" property="categoryId" jdbcType="BIGINT"/>
+        <result column="book_author" property="bookAuthor" jdbcType="VARCHAR"/>
+        <result column="book_price" property="bookPrice" jdbcType="FLOAT"/>
+        <result column="book_image" property="bookImage" jdbcType="VARCHAR"/>
+        <result column="publishing" property="publishing" jdbcType="VARCHAR"/>
+        <result column="book_desc" property="bookDesc" jdbcType="VARCHAR"/>
+        <result column="book_state" property="bookState" jdbcType="INTEGER"/>
+        <result column="deploy_datetime" property="deployDatetime" jdbcType="DATE"/>
+        <result column="sales_volume" property="salesVolume" jdbcType="INTEGER"/>
     </resultMap>
 
 
@@ -45,14 +45,15 @@
         <include refid="selectByCustom"></include>
     </select>
 
-<!-- 使用bookCustom对象的公共sql   -->
+    <!-- 使用bookCustom对象的公共sql   -->
     <sql id="selectByCustom">
         <where>
             <if test="bookState != null">
                 and book_state = #{bookState}
             </if>
             <if test="searchText != null">
-                and (book_name like '%${searchText}%' or publishing like '%${searchText}%' or book_author like '%${searchText}%' or book_desc like '%${searchText}%')
+                and (book_name like '%${searchText}%' or publishing like '%${searchText}%' or book_author like
+                '%${searchText}%' or book_desc like '%${searchText}%')
             </if>
             <if test="categoryId != null">
                 and book_category_id = #{categoryId}
@@ -64,4 +65,33 @@
             </if>
         </if>
     </sql>
+
+    <select id="findBookById" resultMap="bookMap">
+        select * from t_book where book_id = #{id}
+    </select>
+
+    <update id="updateBook" parameterType="book">
+        update t_book
+        <set>
+            <if test="bookName != null">
+                book_name = #{bookName},
+            </if>
+            <if test="categoryId != null">
+                book_category_id = #{categoryId},
+            </if>
+            <if test="bookAuthor != null">
+                book_author = #{bookAuthor},
+            </if>
+            <if test="bookPrice != null">
+                book_price = #{bookPrice},
+            </if>
+            <if test="publishing != null">
+                publishing = #{publishing},
+            </if>
+            <if test="bookDesc != null">
+                book_desc = #{bookDesc}
+            </if>
+        </set>
+        where book_id = #{bookId}
+    </update>
 </mapper>

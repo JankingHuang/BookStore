@@ -9,22 +9,22 @@ import java.math.BigInteger;
  */
 public class Category implements Serializable {
     private static final long serialVersionUID = -8362231900993812313L;
-    private BigInteger id;
+    private Long id;
     private String categoryName;
 
     public Category() {
     }
 
-    public Category(BigInteger id, String categoryName) {
+    public Category(Long id, String categoryName) {
         this.id = id;
         this.categoryName = categoryName;
     }
 
-    public BigInteger getId() {
+    public Long getId() {
         return id;
     }
 
-    public void setId(BigInteger id) {
+    public void setId(Long id) {
         this.id = id;
     }
 

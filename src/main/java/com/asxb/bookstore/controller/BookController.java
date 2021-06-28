@@ -4,8 +4,10 @@ import com.asxb.bookstore.common.BookCustom;
 import com.asxb.bookstore.common.ResultInfo;
 import com.asxb.bookstore.common.impl.ResultInfoFactory;
 import com.asxb.bookstore.pojo.Book;
+import com.asxb.bookstore.pojo.Category;
 import com.asxb.bookstore.service.BookService;
 import com.asxb.bookstore.utils.PinYinUtil;
+import com.sun.org.apache.xpath.internal.operations.Mod;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -72,8 +74,8 @@ public class BookController {
         BookCustom bookCustom = new BookCustom();
         bookCustom.setBookState(1); // 查询未上架图书
 
-        System.out.println("page = " + pageNum);
-        System.out.println("size = " + size);
+//        System.out.println("page = " + pageNum);
+//        System.out.println("size = " + size);
         // 初始化时按第一页处理
         if (pageNum == null) pageNum = 1;
         if (size == null) size = 5;
@@ -100,8 +102,8 @@ public class BookController {
         BookCustom bookCustom = new BookCustom();
         bookCustom.setBookState(2); // 查询上架图书
 
-        System.out.println("page = " + pageNum);
-        System.out.println("size = " + size);
+//        System.out.println("page = " + pageNum);
+//        System.out.println("size = " + size);
         // 初始化时按第一页处理
         if (pageNum == null) pageNum = 1;
         if (size == null) size = 5;
@@ -128,8 +130,8 @@ public class BookController {
         BookCustom bookCustom = new BookCustom();
         bookCustom.setBookState(3); // 查询下架图书
 
-        System.out.println("page = " + pageNum);
-        System.out.println("size = " + size);
+//        System.out.println("page = " + pageNum);
+//        System.out.println("size = " + size);
         // 初始化时按第一页处理
         if (pageNum == null) pageNum = 1;
         if (size == null) size = 5;
@@ -152,17 +154,49 @@ public class BookController {
 
     @RequestMapping("/bookUp")
     public String bookUp(Long id, Model model) {
-
         bookService.bookUp(new BigDecimal(id));
-        model.addAttribute("info", factory.getSuccessTemplateObject());
+
         return "forward:listBook1";
     }
 
     @RequestMapping("/bookDown")
     public String bookDown(Long id, Model model) {
-
         bookService.bookDown(new BigDecimal(id));
-        model.addAttribute("info", factory.getSuccessTemplateObject());
+
         return "forward:listBook2";
+    }
+
+    @RequestMapping("/deleteBookById")
+    public String deleteBookById(Long id, Model model) {
+        bookService.deleteBookById(new BigDecimal(id));
+
+        return "forward:listBook1";
+    }
+
+    @RequestMapping("/editBook")
+    public String editBook(Long id, Model model) {
+
+        Book book = bookService.findBookById(new BigDecimal(id));
+        List<Category> categories = bookService.allCategory();
+
+        // 遍历寻找当前图书的类型名称
+        for (Category category : categories) {
+            if (category.getId().equals(book.getCategoryId())) {
+                model.addAttribute("categoryName", category.getCategoryName());
+                break;
+            }
+        }
+
+        model.addAttribute("book", book);
+        model.addAttribute("categories", categories);
+
+        return "editBook";
+    }
+
+    @RequestMapping("/editBookAction")
+    public String editBookAction(Book book, Model model) {
+//        System.out.println(book);
+        bookService.updateBook(book);
+        return "redirect:listBook1";
     }
 }
