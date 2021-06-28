@@ -5,7 +5,7 @@ target/
 !**/src/test/**/target/
 
 ### yml ###
-#*.yml
+*.yml
 
 ### STS ###
 .apt_generated
