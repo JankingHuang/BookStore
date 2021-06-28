@@ -1,7 +1,6 @@
 package com.asxb.bookstore.config;
 
 import org.springframework.context.annotation.Configuration;
-import org.springframework.web.servlet.config.annotation.InterceptorRegistry;
 import org.springframework.web.servlet.config.annotation.ResourceHandlerRegistry;
 import org.springframework.web.servlet.config.annotation.ViewControllerRegistry;
 import org.springframework.web.servlet.config.annotation.WebMvcConfigurer;
@@ -23,8 +22,13 @@ public class MyWebMVCConfig implements WebMvcConfigurer {
         registry.addViewController("/register").setViewName("register");
         registry.addViewController("/shoppingCar").setViewName("shoppingCar");
         registry.addViewController("/console1").setViewName("console1");
-        registry.addViewController("/list/listBook1").setViewName("list/listBook1");
         registry.addViewController("/editBook").setViewName("editBook");
+        registry.addViewController("/listBook1").setViewName("listBook1");
+        registry.addViewController("/listBook2").setViewName("listBook2");
+        registry.addViewController("/listBook3").setViewName("listBook3");
+        registry.addViewController("/listOrder1").setViewName("listOrder1");
+        registry.addViewController("/listOrder2").setViewName("listOrder2");
+        registry.addViewController("/listOrder3").setViewName("listOrder3");
     }
 
 //    @Override

@@ -4,7 +4,7 @@
     <title>飞凡网上书店</title>
 
 
-    <link th:href="@{../css/main.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{css/main.css}" rel="stylesheet" type="text/css"/>
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="0">
@@ -26,7 +26,7 @@
                         <input type="text" name="" value="" id="input">
                     </td>
                     <td>
-                        <input type="image" name="imageField" src="../images/btn_search.png"/>
+                        <input type="image" name="imageField" src="images/btn_search.png"/>
                     </td>
                 </tr>
             </table>
@@ -52,17 +52,9 @@
 
 
         <!--nav-->
-        <h4>书籍管理</h4>
+        <h4>我的订单</h4>
         <ul class="classify E6">
-            <li>&nbsp;&nbsp;<a href="#">新&nbsp;&nbsp;增</a></li>
-            <li>&nbsp;&nbsp;<a href="#">未上架</a></li>
-            <li>&nbsp;&nbsp;<a href="#">已上架</a></li>
-            <li>&nbsp;&nbsp;<a href="#">已下架</a></li>
-            <div class="fixed"></div>
-        </ul>
-        <h4>订单管理</h4>
-        <ul class="classify E6">
-            <li>&nbsp;&nbsp;<a href="#">未发货</a></li>
+            <li>&nbsp;&nbsp;<a href="#1">未发货</a></li>
             <li>&nbsp;&nbsp;<a href="#">已发货</a></li>
             <li>&nbsp;&nbsp;<a href="#">已签收</a></li>
             <div class="fixed"></div>
@@ -75,25 +67,6 @@
         <div class="o-mt">
             <h2>已发货订单</h2>
         </div>
-        <div class="order01">
-            <form name="" method="post" action="">
-                <table width="100%" border="0" align="center" cellpadding="0" cellspacing="0">
-                    <tr>
-                        <td width="15%" align="right">收货人电话：</td>
-                        <td width="15%">
-                            <input type="text" name="" value="" class="w110 input">
-                        </td>
-                        <td width="15%" align="right"></td>
-                        <td width="15%">
-                            <input type="image" name="imageField2" src="../images/btn_cx.png"/>
-                        </td>
-                        <td width="15%" align="right"></td>
-                        <td width="25%"></td>
-                    </tr>
-                </table>
-            </form>
-        </div>
-
         <div class="order02">
             <table width="100%" border="0" cellspacing="0" cellpadding="0">
                 <tr>
@@ -122,7 +95,7 @@
                     </td>
                     <td width="10%" class="text">￥53.30</td>
                     <td width="10%" class="text">
-
+                        <a href="#">签收</a>
                     </td>
                 </tr>
 

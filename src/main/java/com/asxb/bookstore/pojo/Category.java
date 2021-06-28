@@ -1,13 +1,14 @@
 package com.asxb.bookstore.pojo;
 
+import java.io.Serializable;
 import java.math.BigInteger;
 
 /**
  * @author 刘斌
  * @date 2021/6/27 16:06
  */
-public class Category {
-
+public class Category implements Serializable {
+    private static final long serialVersionUID = -8362231900993812313L;
     private BigInteger id;
     private String categoryName;
 

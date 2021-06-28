@@ -12,7 +12,7 @@ public class Book implements Serializable {
 
     private Long bookId;
     private String bookName;
-    private String NamePinyin;
+    private String namePinyin;
     private Long categoryId;
     private String bookAuthor;
     private Float bookPrice;
@@ -40,11 +40,11 @@ public class Book implements Serializable {
     }
 
     public String getNamePinyin() {
-        return NamePinyin;
+        return this.namePinyin;
     }
 
     public void setNamePinyin(String namePinyin) {
-        NamePinyin = namePinyin;
+        this.namePinyin = namePinyin;
     }
 
     public Long getCategoryId() {
@@ -124,7 +124,7 @@ public class Book implements Serializable {
         return "Book{" +
                 "bookId=" + bookId +
                 ", bookName='" + bookName + '\'' +
-                ", NamePinyin='" + NamePinyin + '\'' +
+                ", NamePinyin='" + namePinyin + '\'' +
                 ", categoryId=" + categoryId +
                 ", bookAuthor='" + bookAuthor + '\'' +
                 ", bookPrice=" + bookPrice +

@@ -48,27 +48,7 @@
 </div>
 
 <div class="w960">
-    <div class="side left">
-
-
-        <!--nav-->
-        <h4>书籍管理</h4>
-        <ul class="classify E6">
-            <li>&nbsp;&nbsp;<a href="#">新&nbsp;&nbsp;增</a></li>
-            <li>&nbsp;&nbsp;<a href="#">未上架</a></li>
-            <li>&nbsp;&nbsp;<a href="#">已上架</a></li>
-            <li>&nbsp;&nbsp;<a href="#">已下架</a></li>
-            <div class="fixed"></div>
-        </ul>
-        <h4>订单管理</h4>
-        <ul class="classify E6">
-            <li>&nbsp;&nbsp;<a href="#">未发货</a></li>
-            <li>&nbsp;&nbsp;<a href="#">已发货</a></li>
-            <li>&nbsp;&nbsp;<a href="#">已签收</a></li>
-            <div class="fixed"></div>
-        </ul>
-        <!--end nav-->
-
+    <div th:replace="common_page/side_left :: manage_left">
     </div>
 
     <div class="w740 right">

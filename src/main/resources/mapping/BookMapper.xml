@@ -10,4 +10,11 @@
     <select id="findAllCategory" resultMap="categoryMap">
         select * from t_book_category
     </select>
+
+    <insert id="addBook" parameterType="book">
+        insert into t_book
+        (book_name, book_name_pinyin, book_category_id, book_author, book_price, publishing, book_desc, deploy_datetime)
+        VALUES
+        (#{bookName}, #{namePinyin}, #{categoryId}, #{bookAuthor}, #{bookPrice}, #{publishing}, #{bookDesc}, #{deployDatetime})
+    </insert>
 </mapper>
