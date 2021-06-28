@@ -122,7 +122,7 @@ public class AddBookMapperTest {
         for (int i = 5; i < (Math.min(list.size(), listDes.size())); i++) {
             Book book = list.get(i);
 
-            System.out.println(book);
+           // System.out.println(book);
 
             book.setBookDesc(listDes.get(i - 5));
             System.out.println(book);
@@ -148,12 +148,12 @@ public class AddBookMapperTest {
 
 
         List<Book> list = bookMapper.findAllBook();
-        for (int i = 5; i < (Math.min(list.size(), listImg.size())); i++) {
+        for (int i = 4; i < (Math.min(list.size(), listImg.size())); i++) {
             Book book = list.get(i);
 
-            System.out.println(book);
+//            System.out.println(book);
 
-            book.setBookImage(listImg.get(i - 5));
+            book.setBookImage(listImg.get(i - 4));
             System.out.println(book);
             bookMapper.updateBookPinyin(book);
         }
@@ -182,7 +182,6 @@ public class AddBookMapperTest {
             }
 
         }
-
     }
 
 }

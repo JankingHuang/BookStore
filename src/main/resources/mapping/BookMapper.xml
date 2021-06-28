@@ -38,33 +38,33 @@
 
     <update id="updateBookPinyin" parameterType="com.asxb.bookstore.pojo.Book">
         update t_book set
-<!--            <if test="bookName !=null">-->
-<!--                book_name=#{bookName},-->
-<!--            </if>-->
-<!--        <if test="namePinyin !=null">-->
-<!--            book_name_pinyin=#{namePinyin},-->
-<!--        </if>-->
-<!--        <if test="categoryId !=null">-->
-<!--            book_category_id=#{categoryId},-->
-<!--        </if>-->
-<!--        <if test="bookAuthor !=null">-->
-<!--            book_author=#{bookAuthor},-->
-<!--        </if>-->
-<!--        <if test="bookPrice !=null">-->
-<!--            book_price=#{bookPrice},-->
-<!--        </if>-->
-<!--        <if test="publishing !=null">-->
-<!--            publishing=#{publishing},-->
-<!--        </if>-->
-<!--        <if test="bookDesc !=null">-->
-<!--            book_desc=#{bookDesc},-->
-<!--        </if>-->
-<!--        <if test="deployDatetime !=null">-->
-            deploy_datetime=#{deployDatetime}
-<!--        </if>-->
-<!--        <if test = "bookImage != null">-->
-<!--            book_image=#{bookImage}-->
-<!--        </if>-->
+            <if test="bookName !=null">
+                book_name=#{bookName},
+            </if>
+        <if test="namePinyin !=null">
+            book_name_pinyin=#{namePinyin},
+        </if>
+        <if test="categoryId !=null">
+            book_category_id=#{categoryId},
+        </if>
+        <if test="bookAuthor !=null">
+            book_author=#{bookAuthor},
+        </if>
+        <if test="bookPrice !=null">
+            book_price=#{bookPrice},
+        </if>
+        <if test="publishing !=null">
+            publishing=#{publishing},
+        </if>
+        <if test="bookDesc !=null">
+            book_desc=#{bookDesc},
+        </if>
+        <if test="deployDatetime !=null">
+            deploy_datetime=#{deployDatetime},
+        </if>
+        <if test = "bookImage != null">
+            book_image=#{bookImage}
+        </if>
         where book_id=#{bookId}
     </update>
 </mapper>
