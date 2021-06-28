@@ -7,6 +7,22 @@
         <result property="categoryName" column="book_category_name"/>
     </resultMap>
 
+    <resultMap id="bookMap" type="book">
+        <id column="book_id" property="bookId" jdbcType="BIGINT" />
+        <result column="book_name" property="bookName" jdbcType="VARCHAR" />
+        <result column="book_name_pinyin" property="namePinyin" jdbcType="VARCHAR" />
+        <result column="book_category_id" property="categoryId" jdbcType="BIGINT" />
+        <result column="book_author" property="bookAuthor" jdbcType="VARCHAR" />
+        <result column="book_price" property="bookPrice" jdbcType="FLOAT" />
+        <result column="book_image" property="bookImage" jdbcType="VARCHAR" />
+        <result column="publishing" property="publishing" jdbcType="VARCHAR" />
+        <result column="book_desc" property="bookDesc" jdbcType="VARCHAR" />
+        <result column="book_state" property="bookState" jdbcType="INTEGER" />
+        <result column="deploy_datetime" property="deployDatetime" jdbcType="DATE" />
+        <result column="sales_volume" property="salesVolume" jdbcType="INTEGER" />
+    </resultMap>
+
+
     <select id="findAllCategory" resultMap="categoryMap">
         select * from t_book_category
     </select>
@@ -17,4 +33,25 @@
         VALUES
         (#{bookName}, #{namePinyin}, #{categoryId}, #{bookAuthor}, #{bookPrice}, #{publishing}, #{bookDesc}, #{deployDatetime})
     </insert>
+
+    <select id="findBooks" parameterType="com.asxb.bookstore.common.BookCustom" resultMap="bookMap">
+        select * from t_book
+        <where>
+            <if test="bookState != null">
+                and book_state = #{bookState}
+            </if>
+            <if test="searchText != null">
+                and (book_name like '%${searchText}%' or publishing like '%${searchText}%' or book_author like '%${searchText}%' or book_desc like '%${searchText}%')
+            </if>
+            <if test="categoryId != null">
+                and book_category_id = #{categoryId}
+            </if>
+        </where>
+        <if test="sortField != null">
+            <if test="sortType != null">
+                order by ${sortField} ${sortType}
+            </if>
+        </if>
+        limit 0, 5
+    </select>
 </mapper>

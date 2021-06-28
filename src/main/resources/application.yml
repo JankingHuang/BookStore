@@ -11,6 +11,6 @@ spring:
 mybatis:
   mapper-locations: classpath:mapping/*Mapper.xml
   type-aliases-package: com.asxb.bookstore.pojo
-#  configuration:
-#    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 打印sql语句
+  configuration:
+    log-impl: org.apache.ibatis.logging.stdout.StdOutImpl # 打印sql语句
 

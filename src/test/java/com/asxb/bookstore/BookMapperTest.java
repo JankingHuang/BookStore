@@ -1,5 +1,6 @@
 package com.asxb.bookstore;
 
+import com.asxb.bookstore.common.BookCustom;
 import com.asxb.bookstore.mapper.BookMapper;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -19,5 +20,15 @@ public class BookMapperTest {
     public void findCategoryTest() {
 
         System.out.println(bookMapper.findAllCategory());
+    }
+
+    // 动态sql查询书籍测试
+    @Test
+    public void findBooksTest() {
+
+        BookCustom bookCustom = new BookCustom();
+//        bookCustom.setSortField("");
+        bookCustom.setCategoryId(11L);
+        System.out.println(bookMapper.findBooks(bookCustom));
     }
 }
