@@ -1,6 +1,7 @@
 package com.asxb.bookstore.service.impl;
 
 import com.asxb.bookstore.mapper.BookMapper;
+import com.asxb.bookstore.pojo.Book;
 import com.asxb.bookstore.pojo.Category;
 import com.asxb.bookstore.service.BookService;
 import org.springframework.beans.factory.annotation.Autowired;
@@ -21,5 +22,10 @@ public class BookServiceImpl implements BookService {
     @Override
     public List<Category> allCategory() {
         return bookMapper.findAllCategory();
+    }
+
+    @Override
+    public void addBook(Book book) {
+        bookMapper.addBook(book);
     }
 }
