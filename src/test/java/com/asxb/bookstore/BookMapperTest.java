@@ -6,6 +6,8 @@ import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
+import java.math.BigDecimal;
+
 /**
  * @author 刘斌
  * @date 2021/6/27 16:20
@@ -39,5 +41,14 @@ public class BookMapperTest {
     public void totalBooks() {
 
         System.out.println(bookMapper.totalBooks(null));
+    }
+
+    // 书籍下架/上架测试
+    @Test
+    public void changeBookStateTest() {
+        // success - 上架
+       bookMapper.bookUp(new BigDecimal(1));
+        // success - 下架
+        bookMapper.bookDown(new BigDecimal(2));
     }
 }

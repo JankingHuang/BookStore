@@ -149,4 +149,20 @@ public class BookController {
         model.addAttribute("page", pageNum); // 当前页
         return "listBook3";
     }
+
+    @RequestMapping("/bookUp")
+    public String bookUp(Long id, Model model) {
+
+        bookService.bookUp(new BigDecimal(id));
+        model.addAttribute("info", factory.getSuccessTemplateObject());
+        return "forward:listBook1";
+    }
+
+    @RequestMapping("/bookDown")
+    public String bookDown(Long id, Model model) {
+
+        bookService.bookDown(new BigDecimal(id));
+        model.addAttribute("info", factory.getSuccessTemplateObject());
+        return "forward:listBook2";
+    }
 }

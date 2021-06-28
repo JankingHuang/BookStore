@@ -75,10 +75,9 @@
                     <td width="15%" class="text" th:text="${book.getBookPrice()}">28.50</td>
                     <td width="25%" class="text" th:text="${book.getPublishing()}">江苏文艺出版社</td>
                     <td width="30%" class="text">
-                        <a href="#">下架</a>
+                        <a th:href="'bookDown?id=' + ${book.getBookId()}">下架</a>
                     </td>
                 </tr>
-
             </table>
         </div>
 
@@ -94,6 +93,8 @@
             <a onclick="go_page('listBook2')">GO</a>
         </div>
         <!-- end page -->
+
+
     </div>
     <div class="fixed"></div>
 </div>

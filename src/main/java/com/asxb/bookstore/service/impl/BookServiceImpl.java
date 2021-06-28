@@ -40,4 +40,14 @@ public class BookServiceImpl implements BookService {
     public BigDecimal findBooksTotal(BookCustom bookCustom) {
         return bookMapper.totalBooks(bookCustom);
     }
+
+    @Override
+    public void bookUp(BigDecimal id) {
+        bookMapper.bookUp(id);
+    }
+
+    @Override
+    public void bookDown(BigDecimal id) {
+        bookMapper.bookDown(id);
+    }
 }

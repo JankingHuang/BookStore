@@ -18,4 +18,10 @@ public interface BookService {
 
     // 按筛选条件查图书总量
     BigDecimal findBooksTotal(BookCustom bookCustom);
+
+    // 上架书籍
+    void bookUp(BigDecimal id);
+
+    // 下架书籍
+    void bookDown(BigDecimal id);
 }
