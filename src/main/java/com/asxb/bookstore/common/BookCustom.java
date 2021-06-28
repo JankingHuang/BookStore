@@ -9,6 +9,8 @@ public class BookCustom extends Book {
     private String sortField;
     private String sortType;
     private String searchText;
+    private Integer pageNum; // 页码
+    private Integer size;   // 限制数量
 
     public String getSortField() {
         return sortField;
@@ -34,5 +36,19 @@ public class BookCustom extends Book {
         this.searchText = searchText;
     }
 
+    public Integer getPageNum() {
+        return pageNum;
+    }
 
+    public void setPageNum(Integer pageNum) {
+        this.pageNum = pageNum;
+    }
+
+    public Integer getSize() {
+        return size;
+    }
+
+    public void setSize(Integer size) {
+        this.size = size;
+    }
 }

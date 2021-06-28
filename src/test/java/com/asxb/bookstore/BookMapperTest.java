@@ -28,7 +28,16 @@ public class BookMapperTest {
 
         BookCustom bookCustom = new BookCustom();
 //        bookCustom.setSortField("");
-        bookCustom.setCategoryId(11L);
+//        bookCustom.setCategoryId(11L);
+
+        bookCustom.setBookState(1);
         System.out.println(bookMapper.findBooks(bookCustom));
+    }
+
+    // 动态sql查询总数测试
+    @Test
+    public void totalBooks() {
+
+        System.out.println(bookMapper.totalBooks(null));
     }
 }

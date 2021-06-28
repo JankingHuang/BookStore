@@ -6,6 +6,8 @@ import com.asxb.bookstore.pojo.Category;
 import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
+import java.math.BigDecimal;
+import java.math.BigInteger;
 import java.util.List;
 
 @Mapper
@@ -17,4 +19,6 @@ public interface BookMapper {
     void addBook(Book book);
 
     List<Book> findBooks(BookCustom bookCustom);
+
+    BigDecimal totalBooks(BookCustom bookCustom);
 }

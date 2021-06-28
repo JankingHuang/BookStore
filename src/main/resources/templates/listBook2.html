@@ -4,14 +4,16 @@
     <title>飞凡网上书店</title>
 
 
-    <link th:href="@{css/main.css}" rel="stylesheet" type="text/css"/>
+    <link th:href="@{/static/css/main.css}" rel="stylesheet" type="text/css"/>
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="0">
+    <script th:src="@{/static/js/jquery-3.4.1.js}"></script>
+    <script th:src="@{/static/js/goto_page.js}"></script>
 </head>
 
 <body>
-<!--top-->
+
 <div id="top_div" th:replace="common_page/admin_top :: admin_top">
 </div>
 
@@ -24,7 +26,6 @@
 </div>
 <!--end nav-->
 
-<!--end top-->
 
 <!--content-->
 <div class="w960 mt10">
@@ -68,34 +69,29 @@
                     <th width="30%" class="bd2">操作</th>
                 </tr>
 
-
-                <tr>
-                    <td width="15%" class="text">冷间谍</td>
-                    <td width="15%" class="text">亨宁曼凯尔</td>
-                    <td width="15%" class="text">
-                        28.50
-                    </td>
-                    <td width="25%" class="text">江苏文艺出版社</td>
+                <tr th:unless="${#lists.isEmpty(info.getData())}" th:each="book : ${info.getData()}">
+                    <td width="15%" class="text" th:text="${book.getBookName()}">冷间谍</td>
+                    <td width="15%" class="text" th:text="${book.getBookAuthor()}">亨宁曼凯尔</td>
+                    <td width="15%" class="text" th:text="${book.getBookPrice()}">28.50</td>
+                    <td width="25%" class="text" th:text="${book.getPublishing()}">江苏文艺出版社</td>
                     <td width="30%" class="text">
-
-
                         <a href="#">下架</a>
-
-
                     </td>
                 </tr>
-
 
             </table>
         </div>
 
         <!-- page -->
         <div style="text-align: right;">
-            每页 5 行 共 1 行 第 1 页 共 1 页 <a href='javascript:gotoPage(1)'>首页</a> <a href='javascript:gotoPage(1)'>上一页</a> <a
-                href='javascript:gotoPage(1)'>下一页</a> <a href='javascript:gotoPage(1)'>尾页</a> 页数 <input type='text'
-                                                                                                        id='pageNumber'
-                                                                                                        style='width:20px;'/>
-            <a href='javascript:jumpPage()'>GO</a>
+            每页 5 行 共 <span th:text="${info.getData().size()}">1</span> 行
+            第 <span th:text="${page}">1</span> 页 共 <span id="max_page" th:text="${size}">1</span> 页
+            <a th:href="'/listBook2?pageNum=1&size=5'">首页</a>
+            <a th:if="${page != 1}" th:href="'/listBook2?pageNum=' + ${page - 1} + '&size=5'">上一页</a>
+            <a th:if="${page != size}" th:href="'/listBook2?pageNum=' + ${page + 1} + '&size=5'">下一页</a>
+            <a th:href="'/listBook2?pageNum=' + ${size} + '&size=5'">尾页</a>
+            页数 <input type='text' id='pageNumber' style='width:20px;'/>
+            <a onclick="go_page('listBook2')">GO</a>
         </div>
         <!-- end page -->
     </div>

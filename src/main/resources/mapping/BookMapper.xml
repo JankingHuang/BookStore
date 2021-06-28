@@ -36,6 +36,17 @@
 
     <select id="findBooks" parameterType="com.asxb.bookstore.common.BookCustom" resultMap="bookMap">
         select * from t_book
+        <include refid="selectByCustom"></include>
+        limit #{pageNum}, #{size}
+    </select>
+
+    <select id="totalBooks" parameterType="com.asxb.bookstore.common.BookCustom" resultType="BigDecimal">
+        select count(1) from t_book
+        <include refid="selectByCustom"></include>
+    </select>
+
+<!-- 使用bookCustom对象的公共sql   -->
+    <sql id="selectByCustom">
         <where>
             <if test="bookState != null">
                 and book_state = #{bookState}
@@ -52,6 +63,5 @@
                 order by ${sortField} ${sortType}
             </if>
         </if>
-        limit 0, 5
-    </select>
+    </sql>
 </mapper>
