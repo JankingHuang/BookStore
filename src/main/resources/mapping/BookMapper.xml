@@ -7,6 +7,20 @@
         <result property="categoryName" column="book_category_name"/>
     </resultMap>
 
+<resultMap id="bookMap" type="book">
+    <id property="bookId" column="book_id"></id>
+    <result property="bookName" column="book_name"></result>
+    <result property="namePinyin" column="book_name_pinyin"></result>
+    <result property="categoryId" column="book_category_id"></result>
+    <result property="bookAuthor" column="book_author"></result>
+    <result property="bookPrice" column="book_price"></result>
+    <result property="bookImage" column="book_image"></result>
+    <result property="publishing" column="publishing"></result>
+    <result property="bookDesc" column="book_desc"></result>
+    <result property="bookState" column="book_state"></result>
+    <result property="salesVolume" column="sales_volume"></result>
+</resultMap>
+
     <select id="findAllCategory" resultMap="categoryMap">
         select * from t_book_category
     </select>
@@ -17,4 +31,40 @@
         VALUES
         (#{bookName}, #{namePinyin}, #{categoryId}, #{bookAuthor}, #{bookPrice}, #{publishing}, #{bookDesc}, #{deployDatetime})
     </insert>
+
+    <select id="findAllBook" resultMap="bookMap">
+        select * from t_book
+    </select>
+
+    <update id="updateBookPinyin" parameterType="com.asxb.bookstore.pojo.Book">
+        update t_book set
+<!--            <if test="bookName !=null">-->
+<!--                book_name=#{bookName},-->
+<!--            </if>-->
+<!--        <if test="namePinyin !=null">-->
+<!--            book_name_pinyin=#{namePinyin},-->
+<!--        </if>-->
+<!--        <if test="categoryId !=null">-->
+<!--            book_category_id=#{categoryId},-->
+<!--        </if>-->
+<!--        <if test="bookAuthor !=null">-->
+<!--            book_author=#{bookAuthor},-->
+<!--        </if>-->
+<!--        <if test="bookPrice !=null">-->
+<!--            book_price=#{bookPrice},-->
+<!--        </if>-->
+<!--        <if test="publishing !=null">-->
+<!--            publishing=#{publishing},-->
+<!--        </if>-->
+<!--        <if test="bookDesc !=null">-->
+<!--            book_desc=#{bookDesc},-->
+<!--        </if>-->
+<!--        <if test="deployDatetime !=null">-->
+            deploy_datetime=#{deployDatetime}
+<!--        </if>-->
+<!--        <if test = "bookImage != null">-->
+<!--            book_image=#{bookImage}-->
+<!--        </if>-->
+        where book_id=#{bookId}
+    </update>
 </mapper>

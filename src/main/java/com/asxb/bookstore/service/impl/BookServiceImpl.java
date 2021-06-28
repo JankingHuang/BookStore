@@ -8,6 +8,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Service;
 
 import java.util.List;
+import java.util.Map;
 
 /**
  * @author 刘斌
@@ -27,5 +28,15 @@ public class BookServiceImpl implements BookService {
     @Override
     public void addBook(Book book) {
         bookMapper.addBook(book);
+    }
+
+    @Override
+    public List<Book> allBook() {
+        return bookMapper.findAllBook();
+    }
+
+    @Override
+    public int updateBookPinyin(Book book) {
+        return bookMapper.updateBookPinyin(book);
     }
 }

@@ -6,12 +6,17 @@ import org.apache.ibatis.annotations.Mapper;
 import org.springframework.stereotype.Repository;
 
 import java.util.List;
+import java.util.Map;
 
 @Mapper
 @Repository
 public interface BookMapper {
 
     List<Category> findAllCategory();
+
+    List<Book> findAllBook();
+
+    int updateBookPinyin(Book book);
 
     void addBook(Book book);
 }
