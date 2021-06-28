@@ -1,0 +1,189 @@
+<!DOCTYPE html>
+<html lang="en" xmlns:th="http://www.thymeleaf.org">
+<head>
+    <title>飞凡网上书店</title>
+
+
+    <link th:href="@{css/main.css}" rel="stylesheet" type="text/css"/>
+    <meta http-equiv="pragma" content="no-cache">
+    <meta http-equiv="cache-control" content="no-cache">
+    <meta http-equiv="expires" content="0">
+</head>
+
+<body>
+<!--top-->
+<div id="top_div" th:replace="common_page/top :: mytop">
+</div>
+
+<div id="header_div">
+    <div id="search">
+        <!--下面form标签的id属性不能修改，因为在css中使用了一个id选择器-->
+        <form id="form">
+            <table width="413" border="0" cellspacing="0" cellpadding="0">
+                <tr>
+                    <td>
+                        <input type="text" name="" value="" id="input">
+                    </td>
+                    <td>
+
+                        <input type="image" name="imageField" src="images/btn_search.png" style="margin-top: 10px;"/>
+
+                    </td>
+                </tr>
+            </table>
+        </form>
+    </div>
+</div>
+
+<!--nav-->
+<div id="nav">
+    <ul id="menu"></ul>
+</div>
+<!--end nav-->
+
+<!--end top-->
+
+<!--con-->
+<div class="w960 mt10">
+    <div class="side left">
+
+
+        <h3>图书分类</h3>
+        <ul class="classify bgf7e4e4 bdf7e4e4" th:if="categories != null" th:each="category : ${categories}">
+
+            <li><a href="#" th:text="${category.getCategoryName()}">文艺</a></li>
+
+            <div class="fixed"></div>
+        </ul>
+
+        <ul class="classify bgf7e4e4 bdf7e4e4" th:unless="categories != null">
+
+            <li><a href="#">文艺</a></li>
+
+            <li><a href="#">小说</a></li>
+
+            <li><a href="#">青春</a></li>
+
+            <li><a href="#">童书</a></li>
+
+            <li><a href="#">励志/成功</a></li>
+
+            <li><a href="#">生活</a></li>
+
+            <li><a href="#">人文社科</a></li>
+
+            <li><a href="#">经管</a></li>
+
+            <li><a href="#">科技</a></li>
+
+            <li><a href="#">教育</a></li>
+
+            <li><a href="#">工具书</a></li>
+
+            <li><a href="#">期刊</a></li>
+
+            <div class="fixed"></div>
+        </ul>
+
+    </div>
+    <div class="w740 right">
+        <div class="main_div">
+            <div class="banner left"><img src="images/banner.png"/></div>
+            <div class="fixed"></div>
+        </div>
+
+        <div class="main_div mt10">
+            <h2>
+                <cite class="left">新书上架</cite>
+                <div class="fixed"></div>
+            </h2>
+
+            <ul class="arivals">
+
+                <li>
+                    <a href="#"><img src="imgs/9.png"/></a>
+                    <p>爱的样子</p>
+                    <p class="red">￥23.60</p>
+                </li>
+
+                <li>
+                    <a href="#"><img src="imgs/8.png"/></a>
+                    <p>时光走了你还在</p>
+                    <p class="red">￥18.50</p>
+                </li>
+
+                <li>
+                    <a href="#"><img src="imgs/7.png"/></a>
+                    <p>AutoCAD入门到精通</p>
+                    <p class="red">￥27.92</p>
+                </li>
+
+                <li>
+                    <a href="#"><img src="imgs/6.png"/></a>
+                    <p>Java从入门到精通</p>
+                    <p class="red">￥29.90</p>
+                </li>
+
+                <li>
+                    <a href="#"><img src="imgs/5.png"/></a>
+                    <p>Python自动化运维</p>
+                    <p class="red">￥58.60</p>
+                </li>
+
+                <div class="fixed"></div>
+            </ul>
+        </div>
+
+        <div class="main_div mt10">
+            <h2>
+                <cite class="left">热销图书</cite>
+                <div class="fixed"></div>
+            </h2>
+
+            <ul class="arivals">
+
+                <li>
+                    <a href="#"><img src="imgs/1.png"/></a>
+                    <p>冷间谍</p>
+                    <p class="red">￥28.50</p>
+                </li>
+
+                <li>
+                    <a href="#"><img src="imgs/2.png"/></a>
+                    <p>第一商会</p>
+                    <p class="red">￥24.80</p>
+                </li>
+
+                <li>
+                    <a href="#"><img src="imgs/3.png"/></a>
+                    <p>狂人摄影日记</p>
+                    <p class="red">￥115.30</p>
+                </li>
+
+                <li>
+                    <a href="#"><img src="imgs/4.png"/></a>
+                    <p>伊文思与纪录电影</p>
+                    <p class="red">￥39.60</p>
+                </li>
+
+                <li>
+                    <a href="#"><img src="imgs/5.png"/></a>
+                    <p>Python自动化运维</p>
+                    <p class="red">￥58.60</p>
+                </li>
+
+                <div class="fixed"></div>
+            </ul>
+        </div>
+    </div>
+    <div class="fixed"></div>
+</div>
+<!--end con-->
+
+<!--footer-->
+<!-- 引用公共页面 -->
+<div id="footer_wrap" th:replace="common_page/footer :: myfooter">
+</div>
+<!--end footer-->
+</body>
+</html>
