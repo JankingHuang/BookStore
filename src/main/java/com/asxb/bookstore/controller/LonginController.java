@@ -46,7 +46,7 @@ public class LonginController {
     public String logout(HttpSession session) {
         System.out.println("logout...");
         session.invalidate();
-        return "index";
+        return "redirect:login";
     }
 }
 

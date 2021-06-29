@@ -5,8 +5,18 @@
 <div id="top_div" th:fragment="mytop">
 
     <p class="left">您好，欢迎来到飞凡网上书店 ！</p>
-    <p class="right"><a th:href="login">登陆</a> | <a th:href="register">注册</a> |
-        <a th:href="shoppingCar">我的购物车</a> | <a th:href="index">网站首页</a></p>
+    <p class="right">
+        <span th:if="${session.user == null}">
+            <a th:href="login">登陆</a> |
+            <a th:href="register">注册</a> |
+        </span>
+
+        <span th:unless="${session.user == null}">
+             <a th:href="logout">退出系统</a> |
+        </span>
+
+        <a th:href="shoppingCar">我的购物车</a> |
+        <a th:href="index">网站首页</a></p>
 
     <div class="fixed"></div>
 </div>

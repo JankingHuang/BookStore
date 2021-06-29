@@ -9,7 +9,7 @@
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="0">
     <script th:src="@{/static/js/jquery-3.4.1.js}"></script>
-    <script th:src="@{/static/js/goto_page.js}"></script>
+
 </head>
 
 <body>
@@ -34,7 +34,7 @@
 
 
         <h3>图书分类</h3>
-        <ul class="classify bgf7e4e4 bdf7e4e4" th:if="categories != null" th:each="category : ${categories}">
+        <ul class="classify bgf7e4e4 bdf7e4e4" th:if="${categories != null}" th:each="category : ${categories}">
 
             <li><a th:href="'findBook?id=' + ${category.getId()} + '&searchText=' + ${searchText}"
                    th:text="${category.getCategoryName()}">文艺</a></li>
@@ -86,20 +86,25 @@
                     <p><strong>出版社：</strong><span th:text="${book.getPublishing()}"></span></p>
                     <p><strong>书籍简介：</strong><span th:text="${book.getBookDesc()}"></span>
                     </p>
-                    <p class="mt10"><a href="#"><img src="images/btn_shopping.png"/></a><a href="#"><img
-                            src="images/btn_accounts.png"/></a></p>
+                    <p class="mt10">
+                        <a th:href="'joinShoppingCar?id=' + ${book.getBookId()}"><img src="images/btn_shopping.png"/></a>
+                        <a th:href="'addOrder'"><img src="images/btn_accounts.png"/></a>
+                    </p>
                 </dd>
                 <div class="fixed"></div>
             </dl>
         </div>
 
+        <input type="hidden" th:value="${nowId}" id="nowId">
         <!-- page -->
         <div style="text-align: right;">
             每页 5 行 共 <span th:text="${total}"></span> 行
             第 <span th:text="${page}"></span> 页 共 <span id="max_page" th:text="${size}"></span> 页
             <a th:href="'/findBook?pageNum=1&size=5&searchText=' + ${searchText} + '&id=' + ${nowId}">首页</a>
-            <a th:if="${page != 1}" th:href="'/findBook?pageNum=' + ${page - 1} + '&size=5&searchText=' + ${searchText} + '&id=' + ${nowId}">上一页</a>
-            <a th:if="${page != size}" th:href="'/findBook?pageNum=' + ${page + 1} + '&size=5&searchText=' + ${searchText} + '&id=' + ${nowId}">下一页</a>
+            <a th:if="${page != 1}"
+               th:href="'/findBook?pageNum=' + ${page - 1} + '&size=5&searchText=' + ${searchText} + '&id=' + ${nowId}">上一页</a>
+            <a th:if="${page != size}"
+               th:href="'/findBook?pageNum=' + ${page + 1} + '&size=5&searchText=' + ${searchText} + '&id=' + ${nowId}">下一页</a>
             <a th:href="'/findBook?pageNum=' + ${size} + '&size=5&searchText=' + ${searchText} + '&id=' + ${nowId}">尾页</a>
             页数 <input type='text' id='pageNumber' style='width:20px;'/>
             <a onclick="go_page('findBook')">GO</a>
@@ -118,4 +123,26 @@
 </div>
 <!--end footer-->
 </body>
+<script>
+    function go_page(page_name) {
+
+        var input_page = $("#pageNumber").val();
+        var max_page = $("#max_page").text();
+        var now_id = $("#nowId").val();
+        var search_text = $("#input").val();
+
+        if (input_page < 1) {
+            input_page = 1;
+        }
+
+        if (input_page > max_page) {
+            input_page = max_page;
+        }
+
+        console.log("sear " + search_text);
+        console.log("now " + now_id);
+        alert("即将跳转到第 " + input_page + "页");
+        window.location.href = "/" + page_name + "?pageNum=" + input_page + "&size=5&searchText=" + search_text + "&id=" + now_id;
+    }
+</script>
 </html>

@@ -1,0 +1,26 @@
+<?xml version="1.0" encoding="UTF-8" ?>
+<!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
+<mapper namespace="com.asxb.bookstore.mapper.ItemMapper">
+
+    <resultMap id="itemMap" type="item">
+        <id column="order_item_id" property="oderItemId"/>
+        <result column="user_id" property="userId"/>
+        <result column="book_id" property="bookId"/>
+        <result column="quantity" property="quantity"/>
+        <result column="state" property="state"/>
+        <result column="book_name" property="bookName"/>
+        <result column="book_price" property="price"/>
+    </resultMap>
+
+    <select id="findItemByUserId" resultMap="itemMap">
+        select a.*, b.book_name, b.book_price from t_order_item a, t_book b
+        where a.book_id = b.book_id and state = 1 and user_id = #{id}
+    </select>
+
+    <insert id="insertItem" parameterType="item">
+        insert into t_order_item
+        (user_id, book_id)
+        VALUES
+        (#{userId}, #{bookId})
+    </insert>
+</mapper>

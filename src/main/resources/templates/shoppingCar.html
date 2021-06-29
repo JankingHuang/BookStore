@@ -8,6 +8,7 @@
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="0">
+    <script th:src="@{/static/js/jquery-3.4.1.js}"></script>
 </head>
 
 <body>
@@ -32,8 +33,14 @@
 
 
         <h3>图书分类</h3>
+        <ul class="classify bgf7e4e4 bdf7e4e4" th:if="${categories != null}" th:each="category : ${categories}">
 
-        <ul class="classify bgf7e4e4 bdf7e4e4">
+            <li><a th:href="'findBook?id=' + ${category.getId()}"
+                   th:text="${category.getCategoryName()}">文艺</a></li>
+
+            <div class="fixed"></div>
+        </ul>
+        <ul class="classify bgf7e4e4 bdf7e4e4" th:unless="${categories != null}">
 
             <li><a href="#">文艺</a></li>
 
@@ -75,29 +82,18 @@
                 </tr>
 
 
-                <tr>
-                    <td width="20%" class="text">冷间谍</td>
-                    <td width="20%" class="text">28.50</td>
+                <tr th:each="item : ${items}">
+                    <td width="20%" class="text" th:text="${item.getBookName()}"></td>
+                    <td width="20%" class="text" th:text="${item.getPrice()}"></td>
                     <td width="20%" class="text">
-                        <input class="input" style="width: 50px;text-align: center;" type="text" id="" value="1">
+                        <input class="input" style="width: 50px;text-align: center;" type="text"
+                               th:name="${item.getOderItemId()}" th:value="${item.getQuantity()}">
                     </td>
-                    <td width="20%" class="text">28.50</td>
-                    <td width="20%" class="text">
-                        <a href="#">删除</a>
-                        <a href="#">更新</a>
-                    </td>
-                </tr>
+                    <td width="20%" class="text" th:text="${item.getTotalPrice()}"></td>
 
-                <tr>
-                    <td width="20%" class="text">第一商会</td>
-                    <td width="20%" class="text">24.80</td>
                     <td width="20%" class="text">
-                        <input class="input" style="width: 50px;text-align: center;" type="text" id="" value="1">
-                    </td>
-                    <td width="20%" class="text">24.80</td>
-                    <td width="20%" class="text">
-                        <a href="#">删除</a>
-                        <a href="#">更新</a>
+                        <a th:href="'deleteItem?id=' + ${item.getOderItemId()}">删除</a>
+                        <a href="#" class="update">更新</a>
                     </td>
                 </tr>
 
@@ -107,17 +103,18 @@
             <table width="100%" border="0" cellspacing="0" cellpadding="0" class="bd2">
                 <tr bgcolor="#fefcea">
                     <td width="80%" align="right"><strong>订单总价：</strong></td>
-                    <td width="20%" align="left"><strong><span class="STYLE1">53.30</span></strong></td>
+                    <td width="20%" align="left"><strong><span class="STYLE1" th:text="${sum}">53.30</span></strong>
+                    </td>
                 </tr>
             </table>
             <table width="738" border="0" cellspacing="0" cellpadding="0" class="mt10">
                 <tr>
                     <td width="5%" align="center"></td>
                     <td width="30%" align="center">
-                        <a href="#"><img src="images/btn_shoppingcart.png"/></a>
+                        <a th:href="'clearShoppingCar'"><img src="images/btn_shoppingcart.png"/></a>
                     </td>
                     <td width="30%" align="center">
-                        <a href="#"><img src="images/btn_jxgm.png"/></a>
+                        <a th:href="'findBook'"><img src="images/btn_jxgm.png"/></a>
                     </td>
                     <td width="30%" align="center">
                         <a href="#"><img src="images/btn_accounts.png"/></a>
@@ -138,4 +135,17 @@
 </div>
 <!--end footer-->
 </body>
+<script>
+
+    $(".input").change(function () {
+        var amount = $(this).val();
+        var item_id = $(this).attr("name");
+
+        console.log(amount);
+        console.log(item_id);
+        $(this).parent("td").next().next().find(".update").attr("href", "/changeItemQuantity?id=" + item_id + "&amount=" + amount);
+
+    });
+
+</script>
 </html>

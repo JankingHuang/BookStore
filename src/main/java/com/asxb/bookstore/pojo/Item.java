@@ -2,14 +2,42 @@ package com.asxb.bookstore.pojo;
 
 import java.io.Serializable;
 
-public class Item implements Serializable{
+public class Item implements Serializable {
 
     private static final long serialVersionUID = 435841321473840065L;
 
     private Long oderItemId;
-    private Long orderId;
-    private Long bookId;
-    private Integer quantity;
+    private Long userId; // 用户id
+    private Long bookId;  // 书籍id
+    private Integer quantity; // 书本数量
+    private int state; // 结算状态 1-未结算，2-已结算
+    private String bookName;
+    private float price;
+    private float totalPrice;
+
+    public float getTotalPrice() {
+        return totalPrice;
+    }
+
+    public void setTotalPrice(float totalPrice) {
+        this.totalPrice = totalPrice;
+    }
+
+    public String getBookName() {
+        return bookName;
+    }
+
+    public void setBookName(String bookName) {
+        this.bookName = bookName;
+    }
+
+    public float getPrice() {
+        return price;
+    }
+
+    public void setPrice(float price) {
+        this.price = price;
+    }
 
     public Long getOderItemId() {
         return oderItemId;
@@ -19,12 +47,20 @@ public class Item implements Serializable{
         this.oderItemId = oderItemId;
     }
 
-    public Long getOrderId() {
-        return orderId;
+    public Long getUserId() {
+        return userId;
     }
 
-    public void setOrderId(Long orderId) {
-        this.orderId = orderId;
+    public void setUserId(Long userId) {
+        this.userId = userId;
+    }
+
+    public int getState() {
+        return state;
+    }
+
+    public void setState(int state) {
+        this.state = state;
     }
 
     public Long getBookId() {
@@ -47,9 +83,10 @@ public class Item implements Serializable{
     public String toString() {
         return "Item{" +
                 "oderItemId=" + oderItemId +
-                ", orderId=" + orderId +
+                ", userId=" + userId +
                 ", bookId=" + bookId +
                 ", quantity=" + quantity +
+                ", state=" + state +
                 '}';
     }
 }
