@@ -8,6 +8,8 @@
     <meta http-equiv="pragma" content="no-cache">
     <meta http-equiv="cache-control" content="no-cache">
     <meta http-equiv="expires" content="0">
+    <script th:src="@{/static/js/jquery-3.4.1.js}"></script>
+    <script th:src="@{/static/js/goto_page.js}"></script>
 </head>
 
 <body>
@@ -32,8 +34,15 @@
 
 
         <h3>图书分类</h3>
+        <ul class="classify bgf7e4e4 bdf7e4e4" th:if="categories != null" th:each="category : ${categories}">
 
-        <ul class="classify bgf7e4e4 bdf7e4e4">
+            <li><a th:href="'findBook?id=' + ${category.getId()} + '&searchText=' + ${searchText}"
+                   th:text="${category.getCategoryName()}">文艺</a></li>
+
+            <div class="fixed"></div>
+        </ul>
+
+        <ul class="classify bgf7e4e4 bdf7e4e4" th:unless="categories != null">
 
             <li><a href="#">文艺</a></li>
 
@@ -65,97 +74,42 @@
     </div>
 
     <div class="w740 right">
-        <div class="order02 pb10">
 
-            <dl class="findbook">
-                <dt class="left"><img src="imgs/1.png"/></dt>
+        <div class="order02 pb10" th:unless="${info.getData().isEmpty()}">
+
+            <dl class="findbook" th:each="book : ${info.getData()}" style="display: flex;flex-direction: row;">
+                <dt class="left"><img th:src="${book.getBookImage()}"/></dt>
                 <dd class="right">
-                    <h4>冷间谍</h4>
-                    <p><strong>作者：</strong>亨宁曼凯尔</p>
-                    <p><strong>价格：</strong>￥28.50</p>
-                    <p><strong>出版社：</strong>江苏文艺出版社</p>
-                    <p><strong>书籍简介：</strong>东野圭吾最钦佩的欧洲犯罪小说大师力作。把“哈利波特”拉下畅销榜榜首的侦探小说。最匪夷所思的历史真相、最错综复杂的政治斗争、最神秘莫测的间谍形象，最完美的罪犯与最完美的犯罪，结局你永远猜不到
+                    <h4 th:text="${book.getBookName()}"></h4>
+                    <p><strong>作者：</strong><span th:text="${book.getBookAuthor()}"></span></p>
+                    <p><strong>价格：</strong>￥<span th:text="${book.getBookPrice()}"></span></p>
+                    <p><strong>出版社：</strong><span th:text="${book.getPublishing()}"></span></p>
+                    <p><strong>书籍简介：</strong><span th:text="${book.getBookDesc()}"></span>
                     </p>
                     <p class="mt10"><a href="#"><img src="images/btn_shopping.png"/></a><a href="#"><img
                             src="images/btn_accounts.png"/></a></p>
                 </dd>
                 <div class="fixed"></div>
             </dl>
-
-            <dl class="findbook">
-                <dt class="left"><img src="imgs/2.png"/></dt>
-                <dd class="right">
-                    <h4>第一商会</h4>
-                    <p><strong>作者：</strong>寒川子</p>
-                    <p><strong>价格：</strong>￥24.80</p>
-                    <p><strong>出版社：</strong>北京联合出版公司</p>
-                    <p><strong>书籍简介：</strong>超级畅销书作家寒川子创作历时三年全新力作！讲述财富与权力“离不开，靠不住”的明暗法则</p>
-                    <p class="mt10"><a href="#"><img src="images/btn_shopping.png"/></a><a href="#"><img
-                            src="images/btn_accounts.png"/></a></p>
-                </dd>
-                <div class="fixed"></div>
-            </dl>
-
-            <dl class="findbook">
-                <dt class="left"><img src="imgs/3.png"/></dt>
-                <dd class="right">
-                    <h4>狂人摄影日记</h4>
-                    <p><strong>作者：</strong>阿刘</p>
-                    <p><strong>价格：</strong>￥115.30</p>
-                    <p><strong>出版社：</strong>电子工业出版社</p>
-                    <p><strong>书籍简介：</strong>风光大师段岳衡作序，凯斯.沃克尔、罗伊.莱姆赛、大卫.迪尔邦、佐尔坦.坎威尔、云漫、吴海辰、范朝亮、张焰八位中外摄影名家联名推荐</p>
-                    <p class="mt10"><a href="#"><img src="images/btn_shopping.png"/></a><a href="#"><img
-                            src="images/btn_accounts.png"/></a></p>
-                </dd>
-                <div class="fixed"></div>
-            </dl>
-
-            <dl class="findbook">
-                <dt class="left"><img src="imgs/4.png"/></dt>
-                <dd class="right">
-                    <h4>伊文思与纪录电影</h4>
-                    <p><strong>作者：</strong>孙红云(译)</p>
-                    <p><strong>价格：</strong>￥39.60</p>
-                    <p><strong>出版社：</strong>吉林出版集团有限责任公司</p>
-                    <p><strong>书籍简介：</strong>本书收录了世界各国著名学者（如比尔·尼克斯等）和伊文思研究专家（如吴沃·托马斯等）从社会、审美等方面研究伊文思纪录电影的15篇文章。文章的研究范围从伊文思创作的第一阶段“电影诗人”时期的《桥》、《雨》一直到封镜之作《风的故事》。书中还收入伊文思1931—1963年间写作的9篇文章，这些论文在欧洲也属于首次整理发表。本书还附录了伊文思的生平与创作年表等资料
-                    </p>
-                    <p class="mt10"><a href="#"><img src="images/btn_shopping.png"/></a><a href="#"><img
-                            src="images/btn_accounts.png"/></a></p>
-                </dd>
-                <div class="fixed"></div>
-            </dl>
-
-            <dl class="findbook">
-                <dt class="left"><img src="imgs/5.png"/></dt>
-                <dd class="right">
-                    <h4>Python自动化运维</h4>
-                    <p><strong>作者：</strong>刘天斯</p>
-                    <p><strong>价格：</strong>￥58.60</p>
-                    <p><strong>出版社：</strong>刘天斯</p>
-                    <p><strong>书籍简介：</strong>中国运维领域偶像级专家、腾讯高级系统工程师在天涯社区和腾讯近10年运维实践的经验和智慧结晶不仅详尽介绍了服务监控、数据报表、系统安全等基础模块，而且深入讲解了自动化操作、系统管理、配置管理、集群管理及大数据应用等高级功能，包含4个完整的综合案例
-                    </p>
-                    <p class="mt10"><a href="#"><img src="images/btn_shopping.png"/></a><a href="#"><img
-                            src="images/btn_accounts.png"/></a></p>
-                </dd>
-                <div class="fixed"></div>
-            </dl>
-
         </div>
 
         <!-- page -->
         <div style="text-align: right;">
-            每页 5 行 共 9 行 第 1 页 共 2 页 <a href='javascript:gotoPage(1)'>首页</a> <a href='javascript:gotoPage(1)'>上一页</a> <a
-                href='javascript:gotoPage(2)'>下一页</a> <a href='javascript:gotoPage(2)'>尾页</a> 页数 <input type='text'
-                                                                                                        id='pageNumber'
-                                                                                                        style='width:20px;'/>
-            <a href='javascript:jumpPage()'>GO</a>
+            每页 5 行 共 <span th:text="${total}"></span> 行
+            第 <span th:text="${page}"></span> 页 共 <span id="max_page" th:text="${size}"></span> 页
+            <a th:href="'/findBook?pageNum=1&size=5&searchText=' + ${searchText} + '&id=' + ${nowId}">首页</a>
+            <a th:if="${page != 1}" th:href="'/findBook?pageNum=' + ${page - 1} + '&size=5&searchText=' + ${searchText} + '&id=' + ${nowId}">上一页</a>
+            <a th:if="${page != size}" th:href="'/findBook?pageNum=' + ${page + 1} + '&size=5&searchText=' + ${searchText} + '&id=' + ${nowId}">下一页</a>
+            <a th:href="'/findBook?pageNum=' + ${size} + '&size=5&searchText=' + ${searchText} + '&id=' + ${nowId}">尾页</a>
+            页数 <input type='text' id='pageNumber' style='width:20px;'/>
+            <a onclick="go_page('findBook')">GO</a>
         </div>
         <!-- end page -->
-
     </div>
-    <div class="fixed"></div>
+
 </div>
-<!--end con-->
+<div class="fixed"></div>
+</div>
 <!--end con-->
 
 <!--footer-->

@@ -83,7 +83,7 @@
 
         <!-- page -->
         <div style="text-align: right;">
-            每页 5 行 共 <span th:text="${info.getData().size()}">1</span> 行
+            每页 5 行 共 <span th:text="${total}">1</span> 行
             第 <span th:text="${page}">1</span> 页 共 <span id="max_page" th:text="${size}">1</span> 页
             <a th:href="'/listBook2?pageNum=1&size=5'">首页</a>
             <a th:if="${page != 1}" th:href="'/listBook2?pageNum=' + ${page - 1} + '&size=5'">上一页</a>

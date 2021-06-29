@@ -15,6 +15,7 @@ import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestParam;
 
 import java.math.BigDecimal;
+import java.util.ArrayList;
 import java.util.Date;
 import java.util.List;
 
@@ -63,8 +64,54 @@ public class BookController {
     }
 
     @RequestMapping(value = "/findBook")
-    public String findBook(Model model) {
-//        model.addAttribute("categories", bookService.allCategory());
+    public String findBook(String searchText, String id, Integer pageNum, Integer size, Model model) {
+        model.addAttribute("categories", bookService.allCategory());
+        BookCustom bookCustom = new BookCustom();
+        bookCustom.setBookState(2);
+        bookCustom.setSortType("DESC");
+        bookCustom.setSortField("deploy_datetime"); // 时间倒序
+
+        if (searchText != null && !searchText.equals("")) {
+            bookCustom.setSearchText(searchText);
+        }
+
+        if (id != null && !id.equals("")) {
+            bookCustom.setCategoryId(Long.valueOf(id));
+        }
+
+        // 初始化时按第一页处理
+        if (pageNum == null) pageNum = 1;
+        if (size == null) size = 5;
+        bookCustom.setPageNum((pageNum - 1) * size);
+        bookCustom.setSize(size);
+
+        // System.out.println(searchText);
+        // System.out.println(id);
+
+        // 查询数据和总量
+        List<Book> books = bookService.findBooksByCustom(bookCustom);
+        BigDecimal total = bookService.findBooksTotal(bookCustom);
+        ResultInfo<List<Book>> info = factory.getSuccessTemplateObject();
+        info.setData(books);
+
+        model.addAttribute("info", info);
+        // 计算总页数
+        model.addAttribute("size", total.divide(new BigDecimal(size), 0, BigDecimal.ROUND_UP)); // 总页数
+        // 总行数
+        model.addAttribute("total", total);
+        model.addAttribute("page", pageNum); // 当前页
+        if (searchText == null) {
+            model.addAttribute("searchText", "");
+        } else {
+            model.addAttribute("searchText", searchText);
+        }
+
+        if (id == null) {
+            model.addAttribute("nowId", "");
+        } else {
+            model.addAttribute("nowId", id);
+        }
+
         return "findBook";
     }
 
@@ -92,6 +139,8 @@ public class BookController {
         model.addAttribute("info", info);
         // 计算总页数
         model.addAttribute("size", total.divide(new BigDecimal(size), 0, BigDecimal.ROUND_UP)); // 总页数
+        // 总行数
+        model.addAttribute("total", total);
         model.addAttribute("page", pageNum); // 当前页
         return "listBook1";
     }
@@ -120,6 +169,8 @@ public class BookController {
         model.addAttribute("info", info);
         // 计算总页数
         model.addAttribute("size", total.divide(new BigDecimal(size), 0, BigDecimal.ROUND_UP)); // 总页数
+        // 总行数
+        model.addAttribute("total", total);
         model.addAttribute("page", pageNum); // 当前页
         return "listBook2";
     }
@@ -148,6 +199,8 @@ public class BookController {
         model.addAttribute("info", info);
         // 计算总页数
         model.addAttribute("size", total.divide(new BigDecimal(size), 0, BigDecimal.ROUND_UP)); // 总页数
+        // 总行数
+        model.addAttribute("total", total);
         model.addAttribute("page", pageNum); // 当前页
         return "listBook3";
     }
@@ -195,15 +248,9 @@ public class BookController {
 
     @RequestMapping("/editBookAction")
     public String editBookAction(Book book, Model model) {
-//        System.out.println(book);
+
         bookService.updateBook(book);
         return "redirect:listBook1";
     }
 
-    @RequestMapping("/bookCategory")
-    public String bookCategory(Long id, Model model) {
-
-
-        return "index";
-    }
 }
