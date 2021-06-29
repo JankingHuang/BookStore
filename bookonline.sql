@@ -10,7 +10,7 @@ Target Server Type    : MYSQL
 Target Server Version : 50721
 File Encoding         : 65001
 
-Date: 2021-06-28 23:05:30
+Date: 2021-06-29 22:06:57
 */
 
 SET FOREIGN_KEY_CHECKS=0;
@@ -43,24 +43,24 @@ CREATE TABLE `t_book` (
 -- ----------------------------
 INSERT INTO `t_book` VALUES ('1', '你努力去爱的样子', 'ANDYZ', '11', '佚名', '32.5', '/static/imgs/1.jpg', '工人出版社', '爱真的很沉重', '2', '2019-06-05 16:42:39', '8');
 INSERT INTO `t_book` VALUES ('2', '冷间谍', 'LJD', '11', '亨宁曼凯尔', '28.8', '/static/imgs/2.jpg', '江苏文艺出版社', '烧脑神作', '2', '2020-09-09 16:42:53', '1');
-INSERT INTO `t_book` VALUES ('3', 'Java从入门到精通', 'JavaCRMDJT', '6', '佚名', '50.4', '/static/imgs/3.jpg', '前进出版社', '技术经典', '2', '2020-07-29 17:06:32', '6');
+INSERT INTO `t_book` VALUES ('3', 'Java从入门到精通', 'JavaCRMDJT', '6', '佚名', '50.4', '/static/imgs/3.png', '前进出版社', '技术经典', '2', '2020-07-29 17:06:32', '6');
 INSERT INTO `t_book` VALUES ('4', '麦田里的守望者', 'MTLDSWZ', '1', '杰罗姆-大卫-塞林格', '29.9', '/static/imgs/4.jpg', '译林出版社', '该书以主人公霍尔顿自叙的语气讲述自己被学校开除后在纽约城游荡将近两昼夜的经历和心灵感受。它不仅生动细致地描绘了一个不安现状的中产阶级子弟的苦闷彷徨、孤独愤世的精神世界，一个青春期少年矛盾百出的心理特征，也批判了成人社会的虚伪和做作。霍尔顿是个性洛复杂而又矛盾的青少年的典型。他有一颗纯洁善良、追求美好生活和崇高理想的童心。', '1', '2021-06-28 08:40:09', '0');
 INSERT INTO `t_book` VALUES ('5', '乞力马扎罗的雪', 'QLMZLDX', '1', '海明威', '39.9', '/static/imgs/5.jpg', '花山出版社', '《乞力马扎罗的雪》是海明威最直接描写死亡，以生与死为主题的作品。其中哈里作为主人公，在病重将死之际半昏迷半清醒的状态下回顾了自己一生中脑海中还存有的一些记忆，而这些都笼罩在死亡的阴影下，尤其是战争带给哈里的巨大创伤，对死亡他由原先的恐惧，暴躁到愤怒，厌倦最后是坦然的接受了。', '3', '2021-06-28 08:49:39', '13');
 INSERT INTO `t_book` VALUES ('6', '人间失格', 'RJSG', '6', '太宰治', '49.9', '/static/imgs/6.jpg', '江苏凤凰出版社', '《人间失格》是日本小说家太宰治创作的一部半自传体小说，于1948年在杂志《展望》上作为全三回的连载小说发表。该小说描述了叶藏是如何一步一步走向丧失为人的资格的道路的，藉由叶藏的独白，窥探作者的内心世界——“充满了可耻的一生”。', '2', '2021-06-28 08:54:01', '6');
 INSERT INTO `t_book` VALUES ('7', '无声告白', 'WSGB', '3', '伍绮诗', '19.9', '/static/imgs/7.jpg', '纽约时报', '《无声告白》是由伍绮诗所著的长篇小说，于2015年8月由江苏凤凰文艺出版社出版。该小说谱写了詹姆斯一家的秘密，故事编排精妙细致，文笔沉稳内敛，不仅跃升为《纽约时报》畅销书，还获得包括美国亚马逊网站在内的无数媒体评选出的2014年度最佳图书，', '2', '2021-06-28 08:59:56', '326');
 INSERT INTO `t_book` VALUES ('8', '等一朵花开', 'DYDHK', '7', '林蒂浣', '29.9', '/static/imgs/8.jpg', '浙江新华书店出版社', '花开半夏，高中时的一见钟情懵懂却难以忘怀这么多年，t他们连再见一面都是奢望要多大的勇气才能跨越彼此间八年的阻碍祁桑榆说我在等一朵花开江然却说我等到的是一份隽永的相守……\r\n\r\n', '2', '2021-06-28 09:09:45', '0');
 INSERT INTO `t_book` VALUES ('9', '下次你路过人间已无我', 'XCNLGRJYWW', '7', '余光中', '39.9', '/static/imgs/9.jpg', '江西人民出版社', '“下次你路过，人间已无我”的意思就是下次你路过我这里，我已经走了，表示不会还在原地等你。曾经的你，也就是那个性格的你，不在了。现在出现在她面前的就是重生的你，另一种性格的你。', '2', '2021-06-28 09:13:11', '123');
-INSERT INTO `t_book` VALUES ('10', '微表情心理学', 'WBQXLX', '10', '鸿雁', '39.9', '/static/imgs/10.jpg', '吉林出版社', '教你瞬间看透人心 ', '1', '2021-06-28 09:17:17', '0');
+INSERT INTO `t_book` VALUES ('10', '微表情心理学', 'WBQXLX', '6', '鸿雁', '39.9', '/static/imgs/10.jpg', '吉林出版社', '教你瞬间看透人心 ', '2', '2021-06-28 09:17:17', '0');
 INSERT INTO `t_book` VALUES ('11', '植物百科', 'ZWBK', '6', '魏红霞', '9.9', '/static/imgs/11.jpg', '北京教育出版社', '本书为北京少年儿童出版社出版的一部植物科普读物，作者纪江红。本书以详尽的资料、简洁的文字、生动的图片向读者展示了一个栩栩如生的植物世界，读者不仅可以清晰地看到植物从简单到复杂的进化脚印，而且可以获得对各类植物的崭新认识。作者：纪江红 ISBN:10位[7530118498]13位[9787530118498] 出版社：北京少年儿童 出版...', '2', '2021-06-28 11:45:18', '6');
-INSERT INTO `t_book` VALUES ('12', '神奇化学', 'SQHX', '6', '崔钟雷', '29.9', '/static/imgs/12.jpg', '黑龙江美术出版社', '\r\n\r\n介绍了生命科学、化学领域中各方面的基础知识，通过趣味性、知识性、实用性良好结合的具体实例，让孩子换上科学的角度去认识感知', '1', '2021-06-28 11:47:49', '4');
+INSERT INTO `t_book` VALUES ('12', '神奇化学', 'SQHX', '6', '崔钟雷', '29.9', '/static/imgs/12.jpg', '黑龙江美术出版社', '\r\n\r\n介绍了生命科学、化学领域中各方面的基础知识，通过趣味性、知识性、实用性良好结合的具体实例，让孩子换上科学的角度去认识感知', '2', '2021-06-28 11:47:49', '4');
 INSERT INTO `t_book` VALUES ('13', '毛毛', 'MM', '3', '米切尔恩德', '29.9', '/static/imgs/13.jpg', '二十一世纪出版社', '毛毛，电影《摆渡人》中的角色，由张榕容饰演。 毛毛和管春本是两小无猜，青梅竹马的一对，但是毛毛因为一次意外失去了记忆，醒来后看见陌生的男子管春很是意外，此时的管春决定找回她的记忆，一心一意为了她改变所有，也因此毛毛与管春再次走上甜蜜幸福的生活。', '1', '2021-06-28 11:51:15', '7');
-INSERT INTO `t_book` VALUES ('14', '杨梅', 'YM', '3', '黄春华', '29.9', '/static/imgs/14.jpg', '中国少年出版社', '杨梅果实酸甜可口，色泽艳丽，富含维生素，营养价值极高，是我国的特产水果之一，深受消费者欢迎。', '1', '2021-06-28 11:53:18', '32');
-INSERT INTO `t_book` VALUES ('15', '不平静的坟墓', 'BPJDFM', '2', '徐建忠', '9.9', '/static/imgs/15.jpg', '外语出版社', '帮助孩子提高英语阅读能力', '1', '2021-06-28 11:55:36', '89');
-INSERT INTO `t_book` VALUES ('16', '不做你的损友', 'BZNDSY', '4', '伍美珍', '29.9', '/static/imgs/16.jpg', '明天出版社', '成长智慧书系列', '1', '2021-06-28 12:00:41', '0');
-INSERT INTO `t_book` VALUES ('17', '生活需要仪式感', 'SHXYYSG', '5', '连山', '9.9', '/static/imgs/17.jpg', '吉林文史出版社', '将就的是日子，讲究的才是生活', '1', '2021-06-28 12:05:07', '15');
-INSERT INTO `t_book` VALUES ('18', '愿所有相遇都恰逢其时', 'YSYXYDQFQS', '12', 'DTT', '9.9', '/static/imgs/18.jpg', '湖南出版社', '结束的已经结束，相逢的终会遇见', '1', '2021-06-28 12:07:26', '56');
-INSERT INTO `t_book` VALUES ('19', '你若盛开，蝴蝶自来', 'NRSK，HDZL', '5', '文娟', '29.9', '/static/imgs/19.jpg', '吉林文史出版社', '人生在世，不就是为了一场盛开吗', '1', '2021-06-28 12:08:50', '0');
-INSERT INTO `t_book` VALUES ('20', 'JAVA入门基础', 'JAVARMJC', '2', '传智播客', '99.9', '/static/imgs/20.jpg', '清华大学出版社', '学IT学JAVA', '1', '2021-06-28 12:11:36', '64');
+INSERT INTO `t_book` VALUES ('14', '杨梅', 'YM', '6', '黄春华', '29.9', '/static/imgs/14.jpg', '中国少年出版社', '杨梅果实酸甜可口，色泽艳丽，富含维生素，营养价值极高，是我国的特产水果之一，深受消费者欢迎。', '2', '2021-06-28 11:53:18', '32');
+INSERT INTO `t_book` VALUES ('15', '不平静的坟墓', 'BPJDFM', '2', '徐建忠', '9.9', '/static/imgs/15.jpg', '外语出版社', '帮助孩子提高英语阅读能力', '2', '2021-06-28 11:55:36', '89');
+INSERT INTO `t_book` VALUES ('16', '不做你的损友', 'BZNDSY', '4', '伍美珍', '29.9', '/static/imgs/16.jpg', '明天出版社', '成长智慧书系列', '2', '2021-06-28 12:00:41', '0');
+INSERT INTO `t_book` VALUES ('17', '生活需要仪式感', 'SHXYYSG', '6', '连山', '9.9', '/static/imgs/17.jpg', '吉林文史出版社', '将就的是日子，讲究的才是生活', '2', '2021-06-28 12:05:07', '15');
+INSERT INTO `t_book` VALUES ('18', '愿所有相遇都恰逢其时', 'YSYXYDQFQS', '12', 'DTT', '9.9', '/static/imgs/18.jpg', '湖南出版社', '结束的已经结束，相逢的终会遇见', '2', '2021-06-28 12:07:26', '56');
+INSERT INTO `t_book` VALUES ('19', '你若盛开，蝴蝶自来', 'NRSK，HDZL', '5', '文娟', '29.9', '/static/imgs/19.jpg', '吉林文史出版社', '人生在世，不就是为了一场盛开吗', '2', '2021-06-28 12:08:50', '0');
+INSERT INTO `t_book` VALUES ('20', 'JAVA入门基础', 'JAVARMJC', '2', '传智播客', '99.9', '/static/imgs/20.jpg', '清华大学出版社', '学IT学JAVA', '2', '2021-06-28 12:11:36', '64');
 
 -- ----------------------------
 -- Table structure for t_book_category
@@ -145,6 +145,9 @@ CREATE TABLE `t_order` (
 -- ----------------------------
 -- Records of t_order
 -- ----------------------------
+INSERT INTO `t_order` VALUES ('1624972065587', '1', '2021-06-29 21:07:45', 'AAA', '131********', '400', 'testAddress', '2', null, '99.9', '1');
+INSERT INTO `t_order` VALUES ('1624972517446', '1', '2021-06-29 21:15:17', 'Test1', '1213123', '111', 'aaaaaaaaa', '1', null, '99.9', '1');
+INSERT INTO `t_order` VALUES ('1624975454987', '1', '2021-06-29 22:04:15', 'qwer', '12312314', '333', 'qqqqq', '1', null, '98.5', '1');
 
 -- ----------------------------
 -- Table structure for t_order_item
@@ -152,19 +155,23 @@ CREATE TABLE `t_order` (
 DROP TABLE IF EXISTS `t_order_item`;
 CREATE TABLE `t_order_item` (
   `order_item_id` bigint(20) NOT NULL AUTO_INCREMENT COMMENT '订单项ID：标识列',
-  `order_id` bigint(20) NOT NULL COMMENT '订单ID：外键',
+  `user_id` bigint(20) NOT NULL COMMENT '订单ID：外键',
   `book_id` bigint(20) NOT NULL COMMENT '书籍ID：外键',
-  `quantity` int(11) NOT NULL COMMENT '数量',
+  `quantity` int(11) NOT NULL DEFAULT '1' COMMENT '数量',
+  `state` int(11) NOT NULL DEFAULT '1' COMMENT '1-未结算，2-已结算',
   PRIMARY KEY (`order_item_id`) USING BTREE,
-  KEY `order_id` (`order_id`) USING BTREE,
+  KEY `order_id` (`user_id`) USING BTREE,
   KEY `book_id` (`book_id`) USING BTREE,
-  CONSTRAINT `t_order_item_ibfk_1` FOREIGN KEY (`order_id`) REFERENCES `t_order` (`order_id`),
+  CONSTRAINT `t_order_item_ibfk_1` FOREIGN KEY (`user_id`) REFERENCES `t_user` (`user_id`),
   CONSTRAINT `t_order_item_ibfk_2` FOREIGN KEY (`book_id`) REFERENCES `t_book` (`book_id`)
-) ENGINE=InnoDB DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='订单项表';
+) ENGINE=InnoDB AUTO_INCREMENT=12 DEFAULT CHARSET=utf8 ROW_FORMAT=DYNAMIC COMMENT='订单项表';
 
 -- ----------------------------
 -- Records of t_order_item
 -- ----------------------------
+INSERT INTO `t_order_item` VALUES ('3', '1', '2', '1', '2');
+INSERT INTO `t_order_item` VALUES ('10', '1', '19', '2', '2');
+INSERT INTO `t_order_item` VALUES ('11', '1', '17', '1', '2');
 
 -- ----------------------------
 -- Table structure for t_user
