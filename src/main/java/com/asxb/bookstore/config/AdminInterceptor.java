@@ -1,5 +1,8 @@
 package com.asxb.bookstore.config;
 
+import com.asxb.bookstore.pojo.User;
+import org.apache.ibatis.annotations.Param;
+import org.springframework.ui.Model;
 import org.springframework.web.servlet.HandlerInterceptor;
 import org.springframework.web.servlet.ModelAndView;
 
@@ -9,31 +12,32 @@ import javax.servlet.http.HttpSession;
 
 /**
  * @author 刘斌
- * @date 2021/6/25 20:27
+ * @date 2021/6/29 22:34
  */
-public class LoginInterceptor implements HandlerInterceptor {
-
+public class AdminInterceptor implements HandlerInterceptor {
 
     @Override
     public boolean preHandle(HttpServletRequest request, HttpServletResponse response, Object handler) throws Exception {
-//        System.out.println("prehandle....");
         HttpSession session = request.getSession();
-        if (session.getAttribute("user") != null) {
+        User user = (User) session.getAttribute("user");
+        if (user.getType() == 1) {
             return true;
         }
 
-        request.setAttribute("msg", "请先登录!");
-        request.getRequestDispatcher("/login").forward(request, response);
+        request.setAttribute("msg", "非管理员用户, 无权限!");
+        request.getRequestDispatcher("/console2").forward(request, response);
         return false;
+
+
     }
 
     @Override
     public void postHandle(HttpServletRequest request, HttpServletResponse response, Object handler, ModelAndView modelAndView) throws Exception {
-//        System.out.println("posthandle....");
+
     }
 
     @Override
     public void afterCompletion(HttpServletRequest request, HttpServletResponse response, Object handler, Exception ex) throws Exception {
-//        System.out.println("afterhandle....");
+
     }
 }

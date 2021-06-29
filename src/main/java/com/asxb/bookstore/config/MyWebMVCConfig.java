@@ -16,16 +16,13 @@ public class MyWebMVCConfig implements WebMvcConfigurer {
 
     @Override
     public void addViewControllers(ViewControllerRegistry registry) {
-        registry.addViewController("/addBook").setViewName("addBook");
         registry.addViewController("/login").setViewName("login");
         registry.addViewController("/register").setViewName("register");
-        registry.addViewController("/shoppingCar").setViewName("shoppingCar");
         registry.addViewController("/console1").setViewName("console1");
         registry.addViewController("/console2").setViewName("console2");
-//        registry.addViewController("/editBook").setViewName("editBook");
-//        registry.addViewController("/listBook1").setViewName("listBook1");
-//        registry.addViewController("/listBook2").setViewName("listBook2");
-//        registry.addViewController("/listBook3").setViewName("listBook3");
+        registry.addViewController("/listMyOrder1").setViewName("listMyOrder1");
+        registry.addViewController("/listMyOrder2").setViewName("listMyOrder2");
+        registry.addViewController("/listMyOrder3").setViewName("listMyOrder3");
         registry.addViewController("/listOrder1").setViewName("listOrder1");
         registry.addViewController("/listOrder2").setViewName("listOrder2");
         registry.addViewController("/listOrder3").setViewName("listOrder3");
@@ -36,5 +33,9 @@ public class MyWebMVCConfig implements WebMvcConfigurer {
         registry.addInterceptor(new LoginInterceptor())
                 .addPathPatterns("/**")
                 .excludePathPatterns("/login", "/register", "/static/**", "/mapping/**", "/loginAction", "/registerAction");
+
+        registry.addInterceptor(new AdminInterceptor())
+                .addPathPatterns("/console1", "/addBook", "/editBook", "/listBook1", "/listBook2", "/listBook3",
+                        "/listOrder1", "/listOrder2", "/listOrder3");
     }
 }

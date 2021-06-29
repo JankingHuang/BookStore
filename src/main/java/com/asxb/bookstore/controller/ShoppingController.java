@@ -44,7 +44,6 @@ public class ShoppingController {
         DecimalFormat decimalFormat = new DecimalFormat("#.00");
         // 处理总价字段
         for (Item item : items) {
-
             item.setTotalPrice(Float.parseFloat(decimalFormat.format(item.getPrice() * item.getQuantity())));
             sum += item.getTotalPrice();
         }
@@ -99,9 +98,13 @@ public class ShoppingController {
     @RequestMapping("/addOrder")
     public String addOrder(Float price, Model model) {
         System.out.println(price);
+        if (price == 0.0f) {
+            model.addAttribute("categories", bookService.allCategory());
+            model.addAttribute("msg", "先去选几本书再来吧~");
+            return "shoppingCar";
+        }
 
         model.addAttribute("price", price);
-
         return "addOrder";
     }
 

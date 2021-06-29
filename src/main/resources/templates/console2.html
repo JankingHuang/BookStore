@@ -32,23 +32,13 @@
 </div>
 
 <div class="w960">
-    <div class="side left">
-
-
-        <!--nav-->
-        <h4>我的订单</h4>
-        <ul class="classify E6">
-            <li>&nbsp;&nbsp;<a href="#1">未发货</a></li>
-            <li>&nbsp;&nbsp;<a href="#">已发货</a></li>
-            <li>&nbsp;&nbsp;<a href="#">已签收</a></li>
-            <div class="fixed"></div>
-        </ul>
-        <!--end nav-->
-
+    <div class="side left" th:replace="common_page/side_left :: my_order">
     </div>
 
     <div class="w740 right">
-
+        <div th:unless="${#request.getAttribute('msg') == null}" style="width: 100%; text-align: center">
+            <p th:text="${#request.getAttribute('msg')}" style="color: red; font-size: 20px;"></p>
+        </div>
     </div>
     <div class="fixed"></div>
 </div>
