@@ -199,4 +199,11 @@ public class BookController {
         bookService.updateBook(book);
         return "redirect:listBook1";
     }
+
+    @RequestMapping("/bookCategory")
+    public String bookCategory(Long id, Model model) {
+
+
+        return "index";
+    }
 }

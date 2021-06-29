@@ -29,10 +29,10 @@ public class LonginController {
         if (user != null) {
             session.setAttribute("user", user);
             if (user.getType() == 1) {
-                return "console1";
+                return "redirect:console1";
             }
             System.out.println(session.getAttribute("user"));
-            return "index";
+            return "redirect:console2";
         }
 
         ResultInfo info = factory.getObjectByEmpConstructor();

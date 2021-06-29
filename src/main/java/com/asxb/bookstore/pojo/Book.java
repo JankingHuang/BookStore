@@ -3,6 +3,8 @@ package com.asxb.bookstore.pojo;
  * @author DingJiang
  * @date 2021/6/27 17:43
  */
+import com.fasterxml.jackson.annotation.JsonFormat;
+
 import java.io.Serializable;
 import java.util.Date;
 
@@ -20,6 +22,7 @@ public class Book implements Serializable {
     private String publishing;
     private String bookDesc;
     private Integer bookState;
+    @JsonFormat(timezone = "Asia/ShangHai", locale = "yyyy-MM-dd HH:mm:ss")
     private Date deployDatetime;
     private Integer salesVolume;
 

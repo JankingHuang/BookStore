@@ -34,7 +34,7 @@
         <h3>图书分类</h3>
         <ul class="classify bgf7e4e4 bdf7e4e4" th:if="categories != null" th:each="category : ${categories}">
 
-            <li><a href="#" th:text="${category.getCategoryName()}">文艺</a></li>
+            <li><a th:href="'index?id=' + ${category.getId()}" th:text="${category.getCategoryName()}">文艺</a></li>
 
             <div class="fixed"></div>
         </ul>
@@ -81,34 +81,44 @@
                 <div class="fixed"></div>
             </h2>
 
-            <ul class="arivals">
+            <ul class="arivals" th:if="${newBooks != null}">
+
+                <li th:each="newBook : ${newBooks}">
+                    <a href="#"><img th:src="${newBook.getBookImage()}"/></a>
+                    <p th:text="${newBook.getBookName()}">爱的样子</p>
+                    <p class="red" th:text="${newBook.getBookPrice()}">￥23.60</p>
+                </li>
+                <div class="fixed"></div>
+            </ul>
+
+            <ul class="arivals" th:unless="${newBooks != null}">
 
                 <li>
-                    <a href="#"><img src="imgs/9.png"/></a>
+                    <a href="#"><img th:src="@{/static/imgs/9.jpg}"/></a>
                     <p>爱的样子</p>
                     <p class="red">￥23.60</p>
                 </li>
 
                 <li>
-                    <a href="#"><img src="imgs/8.png"/></a>
+                    <a href="#"><img th:src="@{/static/imgs/8.jpg}"/></a>
                     <p>时光走了你还在</p>
                     <p class="red">￥18.50</p>
                 </li>
 
                 <li>
-                    <a href="#"><img src="imgs/7.png"/></a>
+                    <a href="#"><img th:src="@{/static/imgs/7.jpg}"/></a>
                     <p>AutoCAD入门到精通</p>
                     <p class="red">￥27.92</p>
                 </li>
 
                 <li>
-                    <a href="#"><img src="imgs/6.png"/></a>
+                    <a href="#"><img th:src="@{/static/imgs/6.jpg}"/></a>
                     <p>Java从入门到精通</p>
                     <p class="red">￥29.90</p>
                 </li>
 
                 <li>
-                    <a href="#"><img src="imgs/5.png"/></a>
+                    <a href="#"><img th:src="@{/static/imgs/5.jpg}"/></a>
                     <p>Python自动化运维</p>
                     <p class="red">￥58.60</p>
                 </li>
@@ -123,34 +133,43 @@
                 <div class="fixed"></div>
             </h2>
 
-            <ul class="arivals">
+            <ul class="arivals" th:if="${hotBooks != null}">
+                <li th:each="hotBook : ${hotBooks}">
+                    <a href="#"><img th:src="${hotBook.getBookImage()}"/></a>
+                    <p th:text="${hotBook.getBookName()}">爱的样子</p>
+                    <p class="red" th:text="${hotBook.getBookPrice()}">￥23.60</p>
+                </li>
+                <div class="fixed"></div>
+            </ul>
+
+            <ul class="arivals" th:unless="${hotBooks != null}">
 
                 <li>
-                    <a href="#"><img src="imgs/1.png"/></a>
+                    <a href="#"><img th:src="@{/static/imgs/1.jgp}"/></a>
                     <p>冷间谍</p>
                     <p class="red">￥28.50</p>
                 </li>
 
                 <li>
-                    <a href="#"><img src="imgs/2.png"/></a>
+                    <a href="#"><img th:src="@{/static/imgs/2.jpg}"/></a>
                     <p>第一商会</p>
                     <p class="red">￥24.80</p>
                 </li>
 
                 <li>
-                    <a href="#"><img src="imgs/3.png"/></a>
+                    <a href="#"><img th:src="@{/static/imgs/3.jpg}"/></a>
                     <p>狂人摄影日记</p>
                     <p class="red">￥115.30</p>
                 </li>
 
                 <li>
-                    <a href="#"><img src="imgs/4.png"/></a>
+                    <a href="#"><img th:src="@{/static/imgs/4.jpg}"/></a>
                     <p>伊文思与纪录电影</p>
                     <p class="red">￥39.60</p>
                 </li>
 
                 <li>
-                    <a href="#"><img src="imgs/5.png"/></a>
+                    <a href="#"><img th:src="@{/static/imgs/5.jpg}"/></a>
                     <p>Python自动化运维</p>
                     <p class="red">￥58.60</p>
                 </li>

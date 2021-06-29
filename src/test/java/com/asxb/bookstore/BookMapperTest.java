@@ -26,13 +26,29 @@ public class BookMapperTest {
 
     // 动态sql查询书籍测试
     @Test
-    public void findBooksTest() {
+    public void findBooksTest_1() {
 
         BookCustom bookCustom = new BookCustom();
 //        bookCustom.setSortField("");
 //        bookCustom.setCategoryId(11L);
 
         bookCustom.setBookState(1);
+        System.out.println(bookMapper.findBooks(bookCustom));
+    }
+
+    // 动态sql查询新上架/热销书籍测试
+    @Test
+    public void findBooksTest_2() {
+
+        BookCustom bookCustom = new BookCustom();
+        bookCustom.setBookState(2);
+//        bookCustom.setSortField("deploy_datetime");
+        bookCustom.setSortField("sales_volume");
+        bookCustom.setSortType("DESC");
+        bookCustom.setPageNum(0);
+        bookCustom.setSize(5);
+//        bookCustom.setCategoryId(11L);
+
         System.out.println(bookMapper.findBooks(bookCustom));
     }
 
