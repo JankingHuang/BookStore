@@ -21,4 +21,6 @@ public interface ItemService {
 
     void insertItem(Item item);
 
+    void updateStateByUserId(BigDecimal userId);
+
 }

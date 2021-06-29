@@ -26,6 +26,9 @@ public interface ItemMapper {
     @Update("update t_order_item set quantity = quantity + 1 where order_item_id = #{id}")
     void updateQuantity(BigDecimal id);
 
+    @Update("update t_order_item set state = 2 where user_id = #{userId}")
+    void updateStateByUserId(BigDecimal userId);
+
     @Select("select order_item_id from t_order_item where user_id = #{userId} and book_id = #{bookId} and state = 1")
     BigDecimal findItemIdByUserAndBookId(@Param("userId") Long userId, @Param("bookId") Long bookId);
 

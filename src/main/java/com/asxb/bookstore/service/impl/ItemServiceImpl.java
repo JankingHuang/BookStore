@@ -53,4 +53,9 @@ public class ItemServiceImpl implements ItemService {
     public void insertItem(Item item) {
         itemMapper.insertItem(item);
     }
+
+    @Override
+    public void updateStateByUserId(BigDecimal userId) {
+        itemMapper.updateStateByUserId(userId);
+    }
 }

@@ -19,8 +19,8 @@
 
     <insert id="insertItem" parameterType="item">
         insert into t_order_item
-        (user_id, book_id)
+        (user_id, book_id, state)
         VALUES
-        (#{userId}, #{bookId})
+        (#{userId}, #{bookId}, #{state})
     </insert>
 </mapper>

@@ -1,18 +1,21 @@
 package com.asxb.bookstore.controller;
 
 import com.asxb.bookstore.pojo.Item;
+import com.asxb.bookstore.pojo.Order;
 import com.asxb.bookstore.pojo.User;
 import com.asxb.bookstore.service.BookService;
 import com.asxb.bookstore.service.ItemService;
+import com.asxb.bookstore.service.OrderService;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
+import org.springframework.web.bind.annotation.RequestBody;
 import org.springframework.web.bind.annotation.RequestMapping;
 
 import javax.servlet.http.HttpSession;
 import java.math.BigDecimal;
 import java.text.DecimalFormat;
-import java.text.NumberFormat;
+import java.util.Date;
 import java.util.List;
 
 /**
@@ -27,6 +30,9 @@ public class ShoppingController {
 
     @Autowired
     BookService bookService;
+
+    @Autowired
+    OrderService orderService;
 
     @RequestMapping("/shoppingCar")
     public String shoppingCar(HttpSession session, Model model) {
@@ -81,11 +87,33 @@ public class ShoppingController {
             Item item = new Item();
             item.setUserId(user.getUserId().longValue());
             item.setBookId(id);
+            item.setState(1);
             itemService.insertItem(item);
         } else {
             itemService.addQuantity(itemId);
         }
 
         return "redirect:shoppingCar";
+    }
+
+    @RequestMapping("/addOrder")
+    public String addOrder(Float price, Model model) {
+        System.out.println(price);
+
+        model.addAttribute("price", price);
+
+        return "addOrder";
+    }
+
+    @RequestMapping("/addOrderAction")
+    public String addOrderAction(Order order, HttpSession session) {
+
+        User user = (User) session.getAttribute("user");
+        order.setUserId(user.getUserId().longValue());
+        order.setOrderDatetime(new Date());
+
+        orderService.insertOrder(order);
+        itemService.updateStateByUserId(new BigDecimal(order.getUserId()));
+        return "listMyOrder1";
     }
 }

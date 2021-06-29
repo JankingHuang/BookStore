@@ -1,12 +1,15 @@
 package com.asxb.bookstore;
 
 import com.asxb.bookstore.mapper.ItemMapper;
+import com.asxb.bookstore.mapper.OrderMapper;
 import com.asxb.bookstore.pojo.Item;
+import com.asxb.bookstore.pojo.Order;
 import org.junit.jupiter.api.Test;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.boot.test.context.SpringBootTest;
 
 import java.math.BigDecimal;
+import java.util.Date;
 
 /**
  * 与购物车相关的mapper测试
@@ -19,6 +22,9 @@ class ShoppingTest {
 
     @Autowired
     ItemMapper itemMapper;
+
+    @Autowired
+    OrderMapper orderMapper;
 
     @Test
     void find_test1() {
@@ -57,12 +63,35 @@ class ShoppingTest {
     }
 
     @Test
+    void update_test3() {
+        // 按user_id 修改state
+        itemMapper.updateStateByUserId(new BigDecimal(1));
+    }
+
+    @Test
     void insert_test1() {
+        // 插入一条 item 记录
         Item item = new Item();
         item.setUserId(1L);
         item.setBookId(5L);
 
         itemMapper.insertItem(item);
+    }
+
+    @Test
+    void insert_test2(){
+        // 插入一条order记录
+        Order order = new Order();
+        order.setUserId(1L);
+        order.setOrderDatetime(new Date());
+        order.setConsignee("AAA");
+        order.setPhone("131********");
+        order.setPostalcode("400");
+        order.setAddress("testAddress");
+        order.setSendType(2);
+        order.setOrderPrice(99.9f);
+
+        orderMapper.insertOrder(order);
     }
 
 }

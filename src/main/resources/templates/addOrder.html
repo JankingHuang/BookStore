@@ -69,42 +69,42 @@
             <h2>订单新增</h2>
         </div>
         <div class="order02 pb10">
-            <form>
+            <form th:action="addOrderAction" th:method="post">
                 <table width="738" align="center" cellpadding="0" cellspacing="0">
                     <tr class="bd2">
                         <th width="20%" align="center" class="bd2">收货人
                         </td>
                         <td width="80%" align="left" class="bd1 pl9">
-                            <input type="text" name="" value="" id="" class="input w300"><span class="required">*</span>
+                            <input type="text" name="consignee" class="input w300"><span class="required">*</span>
                         </td>
                     </tr>
                     <tr class="bd2">
                         <th width="20%" align="center" class="bd2">收货人电话
                         </td>
                         <td width="80%" align="left" class="bd1 pl9">
-                            <input type="text" name="" value="" id="" class="input w300"><span class="required">*</span>
+                            <input type="text" name="phone" class="input w300"><span class="required">*</span>
                         </td>
                     </tr>
                     <tr class="bd2">
                         <th width="20%" align="center" class="bd2">收货人邮编
                         </td>
                         <td width="80%" align="left" class="bd1 pl9">
-                            <input type="text" name="" value="" id="" class="input w300"><span class="required">*</span>
+                            <input type="text" name="postalcode" class="input w300"><span class="required">*</span>
                         </td>
                     </tr>
                     <tr class="bd2">
                         <th width="20%" align="center" class="bd2">收货人地址
                         </td>
                         <td width="80%" align="left" class="bd1 pl9">
-                            <input type="text" name="" value="" id="" class="input w300"><span class="required">*</span>
+                            <input type="text" name="address" class="input w300"><span class="required">*</span>
                         </td>
                     </tr>
-
+                    <input type="hidden" name="orderPrice" th:value="${price}">
                     <tr class="bd2">
                         <th width="20%" align="center" class="bd2">发货方式
                         </td>
                         <td width="80%" align="left" class="bd1 pl9">
-                            <select name="" id="" style="width:305px;">
+                            <select name="sendType" style="width:305px;">
                                 <option value="">--请选择--</option>
                                 <option value="1">平邮</option>
                                 <option value="2">快递</option>
