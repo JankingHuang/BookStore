@@ -37,6 +37,7 @@
     <select id="findOrderByUserAndType" resultMap="orderMap">
         select * from t_order
         <include refid="findCommonSql"></include>
+        order by order_datetime desc
         limit #{pageNum}, #{size}
     </select>
 

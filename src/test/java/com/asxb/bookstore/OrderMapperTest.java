@@ -12,15 +12,15 @@ import java.math.BigDecimal;
  * @date 2021/6/30 8:24
  */
 @SpringBootTest
-class OrderMapTest {
+class OrderMapperTest {
 
     @Autowired
     OrderMapper orderMapper;
 
     @Test
     void findOrder_Test() {
-        System.out.println(orderMapper.findOrderByUserAndType(new BigDecimal(1), 1,0 ,5));
-        System.out.println(orderMapper.totalOrderByUserAndType(new BigDecimal(1), 1));
+        System.out.println(orderMapper.findOrderByUserAndType(null, 1, 0, 5));
+        System.out.println(orderMapper.totalOrderByUserAndType(null, 1));
     }
 
     @Test
