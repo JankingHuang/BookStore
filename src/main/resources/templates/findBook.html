@@ -126,8 +126,8 @@
 <script>
     function go_page(page_name) {
 
-        var input_page = $("#pageNumber").val();
-        var max_page = $("#max_page").text();
+        var input_page = Number($("#pageNumber").val());
+        var max_page = Number($("#max_page").text());
         var now_id = $("#nowId").val();
         var search_text = $("#input").val();
 

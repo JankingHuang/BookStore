@@ -117,6 +117,6 @@ public class ShoppingController {
 
         orderService.insertOrder(order);
         itemService.updateStateByUserId(new BigDecimal(order.getUserId()));
-        return "listMyOrder1";
+        return "redirect:listMyOrder1";
     }
 }

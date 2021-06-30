@@ -2,10 +2,52 @@
 <!DOCTYPE mapper PUBLIC "-//mybatis.org//DTD Mapper 3.0//EN" "http://mybatis.org/dtd/mybatis-3-mapper.dtd" >
 <mapper namespace="com.asxb.bookstore.mapper.OrderMapper">
 
+    <resultMap id="orderMap" type="order">
+        <id property="orderId" column="order_id"/>
+        <result property="userId" column="user_id"/>
+        <result property="orderDatetime" column="order_datetime"/>
+        <result property="consignee" column="consignee"/>
+        <result property="phone" column="phone"/>
+        <result property="postalcode" column="postalcode"/>
+        <result property="address" column="address"/>
+        <result property="sendType" column="send_type"/>
+        <result property="sendDatetime" column="send_datetime"/>
+        <result property="orderPrice" column="order_price"/>
+        <result property="orderState" column="order_state"/>
+    </resultMap>
+
     <insert id="insertOrder" parameterType="order">
         insert into t_order
         (user_id, order_datetime, consignee, phone, postalcode, address, send_type, order_price)
         VALUES
         (#{userId}, #{orderDatetime}, #{consignee}, #{phone}, #{postalcode}, #{address}, #{sendType}, #{orderPrice})
     </insert>
+
+    <sql id="findCommonSql">
+        <where>
+            <if test="userId != null">
+                and user_id = #{userId}
+            </if>
+            <if test="type != null">
+                and order_state = #{type}
+            </if>
+        </where>
+    </sql>
+
+    <select id="findOrderByUserAndType" resultMap="orderMap">
+        select * from t_order
+        <include refid="findCommonSql"></include>
+        limit #{pageNum}, #{size}
+    </select>
+
+    <select id="totalOrderByUserAndType" resultType="bigdecimal">
+        select count(1) from t_order
+        <include refid="findCommonSql"></include>
+    </select>
+
+    <update id="updateType">
+        update t_order set order_state = #{type}
+        where order_id = #{orderId}
+    </update>
+
 </mapper>
